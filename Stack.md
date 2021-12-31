@@ -150,3 +150,28 @@ class CustomStack {
     }
     
 }
+
+7. [Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/).
+
+class Solution {
+
+    public int minAddToMakeValid(String s) {
+        
+        Stack<Character> st = new Stack<>();
+        // storing only the incomplete paranthese and return the size of stack
+        
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            
+            if(ch == '(') st.push(ch);
+            else{
+                if(st.size()>0 && st.peek() == '(') st.pop();
+                else st.push(ch);
+            }
+        }
+        
+        return st.size();
+    }
+}
+
+8. []().
