@@ -1,4 +1,5 @@
 1. [Next Greater Element I] (https://leetcode.com/problems/next-greater-element-i/)
+[GitHub Pages](https://pages.github.com/).
 
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
@@ -31,7 +32,7 @@ https://leetcode.com/problems/next-greater-element-ii/
 
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
-        // same logic but storing index instead of values
+
         HashMap<Integer, Integer> map = new HashMap<>();
         Stack<Integer> stack = new Stack<>();
         
