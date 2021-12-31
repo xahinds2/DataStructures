@@ -26,8 +26,7 @@ class Solution {
     }
 }
 
-2. Next Greater Element II
-https://leetcode.com/problems/next-greater-element-ii/
+2. [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/).
 
 class Solution {
     public int[] nextGreaterElements(int[] nums) {
