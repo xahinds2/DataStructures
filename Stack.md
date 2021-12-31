@@ -118,3 +118,35 @@ class Solution {
         return size;
     }
 }
+
+6. [Design a Stack With Increment Operation](https://leetcode.com/problems/design-a-stack-with-increment-operation/).
+
+class CustomStack {
+    
+	int[] stack;
+    int size;
+    int index;
+    
+    public CustomStack(int maxSize) {
+        stack = new int[maxSize];
+        size = maxSize;
+        index=0;
+    }
+
+    public void push(int x) {
+       if (index<size) stack[index++] = x;
+    }
+
+    public int pop() {
+        if(index == 0) return -1;
+        return stack[--index];
+    }
+
+    public void increment(int k, int val) {
+        if(stack.length == 0) return;
+        int max = Math.min(k, stack.length);
+        for(int i = 0; i<max; i++)
+            stack[i] = stack[i] + val;
+    }
+    
+}
