@@ -1,6 +1,7 @@
 1. [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/).
 
 class Solution {
+
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
         
         // finding the next greater element for each elements in nums2 using stack
@@ -29,8 +30,9 @@ class Solution {
 2. [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/).
 
 class Solution {
-    public int[] nextGreaterElements(int[] nums) {
 
+    public int[] nextGreaterElements(int[] nums) {
+    
         HashMap<Integer, Integer> map = new HashMap<>();
         Stack<Integer> stack = new Stack<>();
         
@@ -50,5 +52,69 @@ class Solution {
         }
 
         return ans;
+    }
+}
+
+3. [Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/).
+
+class Solution {
+
+    public boolean validateStackSequences(int[] pushed, int[] popped) {
+        int num = pushed.length;
+        Stack<Integer> st = new Stack<>();
+        
+        int j=0;
+        for(int x : pushed){
+            st.push(x);
+            while(st.size() > 0 && st.peek() == popped[j]){
+                st.pop();
+                j++;
+            }
+        }
+        
+        return j == num;
+    }
+}
+
+4. [Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/).
+
+class Solution {
+
+    public String removeOuterParentheses(String s) {
+    
+        int size = 0;
+        StringBuilder str = new StringBuilder();
+        
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            if(ch == '('){
+                if(size > 0) str.append(ch);
+                size++;
+            }
+            if(ch == ')'){
+                if(size > 1) str.append(ch);
+                size--;
+            }
+        }
+        return str.toString();
+    }
+}
+
+5. [Crawler Log Folder](https://leetcode.com/problems/crawler-log-folder/).
+
+class Solution {
+
+    public int minOperations(String[] logs) {
+    
+        int size = 0;
+        for(int i=0; i<logs.length; i++){
+            String ch = logs[i];
+            
+            if(ch.equals("../"))size = Math.max(0, size-1);
+            else if(ch.equals("./")){}
+            else size++;
+        }
+        
+        return size;
     }
 }
