@@ -174,4 +174,31 @@ class Solution {
     }
 }
 
-8. []().
+8. [Score of Parentheses](https://leetcode.com/problems/score-of-parentheses/).
+
+class Solution {
+    
+    public int scoreOfParentheses(String s) {
+    
+        Stack<Integer> st = new Stack<>();
+        st.push(0);
+        // storing the levels of bracket in stack
+        // for eg in "((()))"
+        // levels are 0, 1, 2 for each brackets
+        for(char ch : s.toCharArray()){
+            
+            if(ch == '(') st.push(0);
+            else{
+                int mul = st.pop();
+                int add = st.pop();
+                // adding adjacent lvl + current lvl
+                // curr lvl = 2 * previous lvl
+                // but exception is there for 2*0 == 0
+                // for that we are using max function
+                st.push(add + Math.max(2*mul, 1));
+            }
+            // System.out.println(st);
+        }
+        return st.pop();
+    }
+}
