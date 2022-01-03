@@ -254,3 +254,35 @@ class Solution {
         return sb.toString();
     }
 }
+
+10. [Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/).
+
+class Solution {
+    
+    public String minRemoveToMakeValid(String s) {
+        
+        List<Integer> useless = new ArrayList<>();
+        Stack<Integer> st = new Stack<>();
+        
+        // storing the index of useless elements
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            if(ch == '(') st.push(i);
+            else if(ch == ')'){
+                if(st.size() > 0 && s.charAt(st.peek()) == '(') st.pop();
+                else useless.add(i);
+            }
+        }
+        
+        while(!st.isEmpty()) useless.add(st.pop());
+        Collections.sort(useless);
+        
+        // removing the useless elements
+        StringBuilder sb = new StringBuilder(s);
+        for(int i=useless.size()-1; i>=0; i--){
+            sb.deleteCharAt(useless.get(i));
+        }
+        
+        return sb.toString();
+    }
+}
