@@ -202,3 +202,55 @@ class Solution {
         return st.pop();
     }
 }
+
+9. [Reverse Substrings Between Each Pair of Parentheses](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/).
+
+class Solution {
+    
+    public String reverseParentheses(String s) {
+        
+        int n = s.length();
+        
+        // making an array which will contain positions of brackets;
+        // in (abcd), '(' is in 0 and ')' is in 5 so we will store 5 in 0 and 0 in 5
+        int[] pos = new int[n];
+        
+        // stack will store position for temp
+        Stack<Integer> st = new Stack<>();
+        
+        for(int i=0; i<s.length(); i++){
+            char ch = s.charAt(i);
+            
+            if(ch == '(') st.push(i);
+            
+            else if(ch == ')'){
+                // st.peek() must be the last opening bracket,we need the pos of.
+                int j = st.pop();
+                // j == pos of opening bracket
+                // i == pos of closing bracket
+                // lets store this in pos array
+                pos[i] = j;
+                pos[j] = i;
+            }
+        }
+        // use this to explore the pos array
+        // for(int i : pos)
+        //     System.out.print(i + " ");
+        
+        // if we encounter a bracket we will go to its corresponding bracket and will continue to append
+        // eg : (abcs), here we ecounter a brack in 0 so we will go to 5 and continue to append
+        // till we encounter any bracket, 
+        
+        StringBuilder sb = new StringBuilder();
+        for(int i=0, d=1; i<n; i+=d){
+            char ch = s.charAt(i);
+            if(ch == '(' || ch == ')'){
+                i = pos[i];
+                d = -d;
+            }
+            else sb.append(ch);
+        }
+        
+        return sb.toString();
+    }
+}
