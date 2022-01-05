@@ -1,6 +1,6 @@
 # Stack
 
-1. [Next Greater Element I](#1)
+1. [Next Greater Element I](#a)
 2. []
 3. []
 4. []
@@ -19,8 +19,8 @@
 
 # Solutions
 
-### 1
-[Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/).
+
+## [a](https://leetcode.com/problems/next-greater-element-i/).
 
 class Solution {
 
