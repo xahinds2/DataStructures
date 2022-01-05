@@ -4,6 +4,7 @@
 3. [Remove Duplicates from Sorted List II](#Remove-Duplicates-from-Sorted-List-II)
 4. [Partition List](#Partition-List)
 5. [Convert Sorted List to Binary Search Tree](#Convert-Sorted-List-to-Binary-Search-Tree)
+6. [Swapping Nodes in a Linked List](#Swapping-Nodes-in-a-Linked-List)
 
 
 # Solutions
@@ -118,4 +119,30 @@
         root.right = sortedListToBST(slow.next);
         
         return root;
+    }
+
+### [Swapping Nodes in a Linked List](https://leetcode.com/problems/swapping-nodes-in-a-linked-list/)
+
+    public ListNode swapNodes(ListNode head, int k) {
+        ListNode fast = head, slow = head;
+        ListNode first = head, second = head;
+        
+        for(int i=1; i< k; i++) 
+            fast = fast.next;
+        
+        first = fast;
+    
+        while(fast.next != null){
+            fast = fast.next;
+            slow = slow.next;
+        }
+        
+        second = slow;
+        
+        // swap 
+        int temp = first.val;
+        first.val = second.val;
+        second.val = temp;
+        
+        return head;
     }
