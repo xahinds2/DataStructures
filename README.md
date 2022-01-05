@@ -1,10 +1,13 @@
-## Stack
-1 [Remove Outermost Parentheses](#Remove-Outermost-Parentheses)
-2 [Remove Outermost Parentheses](#Remove-Outermost-Parentheses)
-3 [Remove Outermost Parentheses](#Remove-Outermost-Parentheses)
+# Data Structures
 
-## Solutions
-# [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/).
+## Stack
+1. [Next Greater Element I](1.Next-Greater-Element-I)
+2. 
+
+
+
+
+1. [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/).
 
 class Solution {
 
@@ -82,7 +85,7 @@ class Solution {
     }
 }
 
-# Remove Outermost Parentheses
+4. [Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/).
 
 class Solution {
 
@@ -370,4 +373,3 @@ class Solution {
         return sb.reverse().toString();
     }
 }
-
