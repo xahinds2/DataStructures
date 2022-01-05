@@ -5,6 +5,7 @@
 4. [Partition List](#Partition-List)
 5. [Convert Sorted List to Binary Search Tree](#Convert-Sorted-List-to-Binary-Search-Tree)
 6. [Swapping Nodes in a Linked List](#Swapping-Nodes-in-a-Linked-List)
+7. [Split Linked List in Parts](#split-linked-list-in-parts)
 
 
 # Solutions
@@ -145,4 +146,41 @@
         second.val = temp;
         
         return head;
+    }
+
+### [Split Linked List in Parts](https://leetcode.com/problems/split-linked-list-in-parts/)
+
+    public ListNode[] splitListToParts(ListNode head, int k) {
+        
+        int size = 0;
+        ListNode temp = head;
+        for(temp = head; temp != null; temp = temp.next) size++;
+        
+        int q = size / k, r = size % k;
+        
+        ListNode[] arr = new ListNode[k];
+        
+        ListNode prev = null;
+        temp = head;
+        
+        for(int i=0; i<k; i++){
+            if(temp != null) arr[i] = temp;
+            
+            int need = 0;
+            if(r > 0) { need = q + 1; r--;}
+            else need = q;
+            
+            int got = 0;
+            while(temp != null){
+                if(got == need) {
+                    prev.next = null;
+                    break;
+                }
+                got++;
+                prev = temp;
+                temp = temp.next;
+            }
+        }
+        
+        return arr;
     }
