@@ -2,12 +2,12 @@
 1. [Middle Of A Linked List](#Middle-Of-A-Linked-List)
 2. [Remove Duplicates from Sorted List](#Remove-Duplicates-from-Sorted-List)
 3. [Remove Duplicates from Sorted List II](#Remove-Duplicates-from-Sorted-List-II)
-4. [Partition List](#Partition-List).
+4. [Partition List](#Partition-List)
 
 
 # Solutions
 
-### [Middle Of A Linked List](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/middle-of-a-linked-list/ojquestion).
+### [Middle Of A Linked List](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/middle-of-a-linked-list/ojquestion)
 
     public static ListNode midNode(ListNode head) {
     
@@ -25,7 +25,7 @@
         return slow;
     }
 
-### [Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/).
+### [Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/)
     
     public ListNode deleteDuplicates(ListNode head) {
         ListNode curr = head;
@@ -43,7 +43,7 @@
         return head;
     }
 
-### [Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/).
+### [Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/)
 
     public ListNode deleteDuplicates(ListNode head) {
         
@@ -63,7 +63,7 @@
     }
 }
 
-### [Partition List](https://leetcode.com/problems/partition-list/).
+### [Partition List](https://leetcode.com/problems/partition-list/)
 
     public ListNode partition(ListNode head, int x) {
         
