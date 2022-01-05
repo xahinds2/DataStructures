@@ -3,7 +3,7 @@
 1. [Next Greater Element I](#next-greater-element-i)
 2. [Next Greater Element II](#next-greater-element-i)
 3. [Validate Stack Sequences](#validate-stack-sequences)
-4. [Remove Outermost Parentheses](#remove-outermost-parenthesis)
+4. [Remove Outermost Parentheses](#remove-outermost-parentheses)
 5. []
 6. []
 7. []
@@ -12,7 +12,7 @@
 10. []
 11. []
 12. []
-13. [Remove Duplicate Letters](#13)
+13. [Remove Duplicate Letters](#remove-duplicate-letters)
 14. []
 
 
