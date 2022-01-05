@@ -2,7 +2,7 @@
 
 ## Stack
 1. [Next Greater Element I](###Next-Greater-Element-I)
-2. [Next Greater Element II](###Next-Greater-Element-II)
+2. [Next Greater Element II](###next-greater-element-ii)
 
 
 
@@ -36,7 +36,7 @@ class Solution {
     }
 }
 
-### [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/).
+### Next Greater Element II
 
 class Solution {
 
