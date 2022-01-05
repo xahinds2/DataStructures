@@ -6,7 +6,7 @@
 4. [Remove Outermost Parentheses](#remove-outermost-parentheses)
 5. [Crawler Log Folder](#crawler-log-folder)
 6. [Design a Stack With Increment Operation](#design-a-stack-with-increment-operation)
-7. [Minimum Add to Make Parentheses Valid](#minimum-add-to-make-parentheses-valid])
+7. [Minimum Add to Make Parentheses Valid](#minimum-add-to-make-parentheses-valid)
 8. [Score of Parentheses](#score-of-parentheses)
 9. [Reverse Substrings Between Each Pair of Parentheses](reverse-substrings-between-each-pair-of-parentheses)
 10. [Minimum Remove to Make Valid Parentheses](#minimum-remove-to-make-valid-parentheses)
