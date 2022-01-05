@@ -187,7 +187,7 @@
     
 ### [Reverse A Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/reverse-a-linkedlist/ojquestion)
     
-        public static ListNode reverse(ListNode head) {
+    public static ListNode reverse(ListNode head) {
         ListNode next = null;
         ListNode curr = null;
         
