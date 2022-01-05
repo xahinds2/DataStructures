@@ -13,7 +13,7 @@
 11. [Online Stock Span](#online-stock-span)
 12. [Remove K Digits](#remove-k-digits)
 13. [Remove Duplicate Letters](#remove-duplicate-letters)
-14. [Remove Duplicate Letters](#Remove-Duplicate-Letters)
+
 
 
 
