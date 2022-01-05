@@ -2,7 +2,7 @@
 1. [Middle Of A Linked List](#Middle-Of-A-Linked-List)
 2. [Remove Duplicates from Sorted List](#Remove-Duplicates-from-Sorted-List)
 3. [Remove Duplicates from Sorted List II](#Remove-Duplicates-from-Sorted-List-II)
-
+4. [Partition List](#Partition-List).
 
 
 # Solutions
@@ -62,3 +62,34 @@
         return head;
     }
 }
+
+### [Partition List](https://leetcode.com/problems/partition-list/).
+
+    public ListNode partition(ListNode head, int x) {
+        
+        ListNode a = new ListNode(0);
+        ListNode b = new ListNode(0);
+        
+        ListNode aHead = a;
+        ListNode bHead = b;
+        ListNode temp = head;
+        
+        while(temp != null){
+            if(temp.val < x){
+                a.next = new ListNode(temp.val);
+                a = a.next;
+            }
+            else{
+                b.next = new ListNode(temp.val);
+                b = b.next;
+            }
+            temp = temp.next;
+        }
+        
+        a.next = bHead.next;
+
+        if(aHead.next == null)
+            aHead.next = bHead.next; 
+        
+        return aHead.next;
+    }
