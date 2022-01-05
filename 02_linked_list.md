@@ -7,6 +7,7 @@
 6. [Swapping Nodes in a Linked List](#Swapping-Nodes-in-a-Linked-List)
 7. [Split Linked List in Parts](#split-linked-list-in-parts)
 8. [Reverse A Linkedlist](#reverse-a-linkedlist)
+9. [Palindrome Linkedlist](#palindrome-linkedlist)
 
 # Solutions
 
@@ -200,3 +201,23 @@
         
         return next;
     }
+
+### [Palindrome Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/palindrome-linkedlist-/ojquestion)
+
+    public static boolean isPalindrome(ListNode head) {
+        ListNode mid = midNode(head);
+        ListNode temp = mid.next;
+        mid.next = null;
+        
+        ListNode rev = reverse(temp);
+        
+        while(rev != null && head != null){
+            if(rev.val != head.val) return false;
+            rev = rev.next;
+            head = head.next;
+        }
+        
+        return true;
+    }
+    
+### []()
