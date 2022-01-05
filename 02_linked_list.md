@@ -26,8 +26,6 @@
     }
 
 ### [Remove Duplicates from Sorted List](https://leetcode.com/problems/remove-duplicates-from-sorted-list/).
-
-class Solution {
     
     public ListNode deleteDuplicates(ListNode head) {
         ListNode curr = head;
@@ -44,11 +42,8 @@ class Solution {
 
         return head;
     }
-}
 
 ### [Remove Duplicates from Sorted List II](https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/).
-
-class Solution {
 
     public ListNode deleteDuplicates(ListNode head) {
         
