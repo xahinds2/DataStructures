@@ -6,7 +6,7 @@
 5. [Convert Sorted List to Binary Search Tree](#Convert-Sorted-List-to-Binary-Search-Tree)
 6. [Swapping Nodes in a Linked List](#Swapping-Nodes-in-a-Linked-List)
 7. [Split Linked List in Parts](#split-linked-list-in-parts)
-8. [Reverse A Linkedlist](reverse-a-linkedlist)
+8. [Reverse A Linkedlist](#reverse-a-linkedlist)
 
 # Solutions
 
