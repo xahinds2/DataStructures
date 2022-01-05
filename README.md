@@ -1,7 +1,7 @@
 # Data Structures
 
 ## Stack
-1. [Next Greater Element I](###Next-Greater-Element-I)
+1. [Next Greater Element I](#next-greater-element-i)
 2. [Course summary](#course-summary)
 
 
