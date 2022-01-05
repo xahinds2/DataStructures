@@ -1,11 +1,11 @@
 # Stack
 
-1. [Next Greater Element I](#1)
+1. [Next Greater Element I](>1)
 13. [Remove Duplicate Letters](#13)
 
 
 
-### 1
+> 1
 [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/).
 
 class Solution {
