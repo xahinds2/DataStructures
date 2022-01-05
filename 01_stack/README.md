@@ -1,13 +1,11 @@
-# Data Structures
+# Stack
 
-## Stack
 1. [Next Greater Element I](#next-greater-element-i)
-2. [Course summary](#course-summary)
+2. [Next Greater Element II](#next-greater-element-ii)
 
 
-
-
-### [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/)
+## Next Greater Element I
+[Leetcode](https://leetcode.com/problems/next-greater-element-i/)
 
 class Solution {
 
@@ -36,7 +34,8 @@ class Solution {
     }
 }
 
-### Next Greater Element II
+## Next Greater Element II
+3. (https://leetcode.com/problems/next-greater-element-ii/)
 
 class Solution {
 
@@ -64,7 +63,7 @@ class Solution {
     }
 }
 
-### [Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/).
+3. [Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/).
 
 class Solution {
 
@@ -85,7 +84,7 @@ class Solution {
     }
 }
 
-### [Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/).
+4. [Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/).
 
 class Solution {
 
@@ -109,7 +108,7 @@ class Solution {
     }
 }
 
-### [Crawler Log Folder](https://leetcode.com/problems/crawler-log-folder/).
+5. [Crawler Log Folder](https://leetcode.com/problems/crawler-log-folder/).
 
 class Solution {
 
@@ -128,7 +127,7 @@ class Solution {
     }
 }
 
-### [Design a Stack With Increment Operation](https://leetcode.com/problems/design-a-stack-with-increment-operation/).
+6. [Design a Stack With Increment Operation](https://leetcode.com/problems/design-a-stack-with-increment-operation/).
 
 class CustomStack {
     
@@ -160,7 +159,7 @@ class CustomStack {
     
 }
 
-### [Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/).
+7. [Minimum Add to Make Parentheses Valid](https://leetcode.com/problems/minimum-add-to-make-parentheses-valid/).
 
 class Solution {
 
@@ -183,7 +182,7 @@ class Solution {
     }
 }
 
-### [Score of Parentheses](https://leetcode.com/problems/score-of-parentheses/).
+8. [Score of Parentheses](https://leetcode.com/problems/score-of-parentheses/).
 
 class Solution {
     
@@ -212,7 +211,7 @@ class Solution {
     }
 }
 
-### [Reverse Substrings Between Each Pair of Parentheses](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/).
+9. [Reverse Substrings Between Each Pair of Parentheses](https://leetcode.com/problems/reverse-substrings-between-each-pair-of-parentheses/).
 
 class Solution {
     
@@ -264,7 +263,7 @@ class Solution {
     }
 }
 
-### [Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/).
+10. [Minimum Remove to Make Valid Parentheses](https://leetcode.com/problems/minimum-remove-to-make-valid-parentheses/).
 
 class Solution {
     
@@ -296,7 +295,7 @@ class Solution {
     }
 }
 
-### [Online Stock Span](https://leetcode.com/problems/online-stock-span/).
+11. [Online Stock Span](https://leetcode.com/problems/online-stock-span/).
 
 class StockSpanner {
 
@@ -311,7 +310,7 @@ class StockSpanner {
     }
 }
 
-### [Remove K Digits](https://leetcode.com/problems/remove-k-digits/).
+12. [Remove K Digits](https://leetcode.com/problems/remove-k-digits/).
 
 class Solution {
 
@@ -341,7 +340,7 @@ class Solution {
     }
 }
 
-### [Course summary](https://www.pepcoding.com/faangList2.0)
+13. [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/).
 
 class Solution {
 
