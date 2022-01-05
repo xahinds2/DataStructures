@@ -2,7 +2,7 @@
 
 ## Stack
 1. [Next Greater Element I](###Next-Greater-Element-I)
-2. [Next Greater Element II](###next-greater-element-ii)
+2. [Course summary](#course-summary)
 
 
 
@@ -341,7 +341,7 @@ class Solution {
     }
 }
 
-### [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/).
+### Course summary
 
 class Solution {
 
