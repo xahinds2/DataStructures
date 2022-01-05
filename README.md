@@ -1,9 +1,8 @@
-## DataStructures
+## Stack
+* [Remove Outermost Parentheses](#Remove Outermost Parentheses)
 
-# Stack
-*[Next Greater Element I](4. Remove Outermost Parentheses)
-
-1. [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/).
+## Solutions
+# [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/).
 
 class Solution {
 
@@ -81,7 +80,7 @@ class Solution {
     }
 }
 
-4. [Remove Outermost Parentheses](https://leetcode.com/problems/remove-outermost-parentheses/).
+# Remove Outermost Parentheses
 
 class Solution {
 
