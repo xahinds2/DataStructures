@@ -1,6 +1,6 @@
 # Stack
 
-1. [Next Greater Element I](#next-greater-element-i)
+1. [Next Greater Element I](#1)
 2. [Next Greater Element II](#next-greater-element-ii)
 3. []()
 4. []()
@@ -14,7 +14,7 @@
 12. []()
 
 
-
+## 1
 ## Next Greater Element I
 [Leetcode](https://leetcode.com/problems/next-greater-element-i/)
 
