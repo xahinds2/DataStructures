@@ -6,7 +6,7 @@
 5. [Convert Sorted List to Binary Search Tree](#Convert-Sorted-List-to-Binary-Search-Tree)
 6. [Swapping Nodes in a Linked List](#Swapping-Nodes-in-a-Linked-List)
 7. [Split Linked List in Parts](#split-linked-list-in-parts)
-
+8. [Reverse A Linkedlist](reverse-a-linkedlist)
 
 # Solutions
 
@@ -183,4 +183,21 @@
         }
         
         return arr;
+    }
+    
+### [Reverse A Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/reverse-a-linkedlist/ojquestion)
+    
+        public static ListNode reverse(ListNode head) {
+        ListNode next = null;
+        ListNode curr = null;
+        
+        ListNode temp = head;
+        while(temp != null){
+            curr = new ListNode(temp.val);
+            curr.next = next;
+            next = curr;
+            temp = temp.next;
+        }
+        
+        return next;
     }
