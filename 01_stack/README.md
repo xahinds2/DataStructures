@@ -21,6 +21,7 @@
 
 
 ### [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/).
+[stack](#stack)
 
 class Solution {
 
@@ -49,7 +50,9 @@ class Solution {
     }
 }
 
+
 ### [Next Greater Element II](https://leetcode.com/problems/next-greater-element-ii/).
+[stack](#stack)
 
 class Solution {
 
@@ -78,6 +81,7 @@ class Solution {
 }
 
 ### [Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/).
+[stack](#stack)
 
 class Solution {
 
