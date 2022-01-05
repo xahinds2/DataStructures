@@ -1,5 +1,7 @@
 ## Stack
-* [Remove Outermost Parentheses](#Remove-Outermost-Parentheses)
+1 [Remove Outermost Parentheses](#Remove-Outermost-Parentheses)
+2 [Remove Outermost Parentheses](#Remove-Outermost-Parentheses)
+3 [Remove Outermost Parentheses](#Remove-Outermost-Parentheses)
 
 ## Solutions
 # [Next Greater Element I](https://leetcode.com/problems/next-greater-element-i/).
