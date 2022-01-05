@@ -331,3 +331,36 @@ class Solution {
         return sb.toString();
     }
 }
+
+13. [Remove Duplicate Letters](https://leetcode.com/problems/remove-duplicate-letters/).
+
+class Solution {
+
+    public String removeDuplicateLetters(String s) {
+        
+        int[] arr = new int[26];
+        for(char ch : s.toCharArray()) arr[ch - 'a']++;
+        
+        boolean[] vis = new boolean[26];
+        Stack<Character> st = new Stack<>();
+        
+        for(char ch : s.toCharArray()){
+            int idx = ch-'a';
+            arr[idx]--;
+            
+            if(vis[idx]) continue;
+            
+            while(!st.isEmpty() && st.peek() > ch && arr[st.peek()-'a'] != 0){
+                vis[st.pop()-'a'] = false;
+            }
+            
+            vis[idx] = true;
+            st.push(ch);
+        }
+        
+        StringBuilder sb=new StringBuilder();
+        while(!st.isEmpty()) sb.append(st.pop());
+        
+        return sb.reverse().toString();
+    }
+}
