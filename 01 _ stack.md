@@ -302,3 +302,32 @@ class StockSpanner {
     }
 }
 
+12. [Remove K Digits](https://leetcode.com/problems/remove-k-digits/).
+
+class Solution {
+
+    public String removeKdigits(String num, int k) {
+        Stack<Character> st = new Stack<>();
+        StringBuilder sb = new StringBuilder();
+        
+        for(char c : num.toCharArray()){
+            while(sb.length()>0 && c < sb.charAt(sb.length()-1) && k>0){
+                sb.deleteCharAt(sb.length()-1);
+                k--;
+            }
+            sb.append(c);
+        }
+        
+        while(k > 0){
+            sb.deleteCharAt(sb.length()-1);
+            k--;
+        }
+        
+        if(sb.length() == 0) sb.append('0');
+        
+        while(sb.length() > 1 && sb.charAt(0) == '0')
+            sb.deleteCharAt(0);
+
+        return sb.toString();
+    }
+}
