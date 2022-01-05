@@ -341,7 +341,7 @@ class Solution {
     }
 }
 
-### Course summary
+### [Course summary](https://www.pepcoding.com/faangList2.0)
 
 class Solution {
 
