@@ -3,6 +3,7 @@
 2. [Remove Duplicates from Sorted List](#Remove-Duplicates-from-Sorted-List)
 3. [Remove Duplicates from Sorted List II](#Remove-Duplicates-from-Sorted-List-II)
 4. [Partition List](#Partition-List)
+5. [Convert Sorted List to Binary Search Tree](#Convert-Sorted-List-to-Binary-Search-Tree)
 
 
 # Solutions
@@ -92,4 +93,29 @@
             aHead.next = bHead.next; 
         
         return aHead.next;
+    }
+
+### [Convert Sorted List to Binary Search Tree]()
+
+    public TreeNode sortedListToBST(ListNode head) {
+        if (head == null) return null;
+        if (head.next == null) return new TreeNode(head.val);
+        
+        // finding mid
+        ListNode slow = head, pre = null, fast = head;
+        while (fast != null && fast.next != null) {
+            pre = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        
+        // pre = mid.previous
+        // cut left sub list here
+        pre.next = null;
+        
+        TreeNode root = new TreeNode(slow.val);
+        root.left = sortedListToBST(head);
+        root.right = sortedListToBST(slow.next);
+        
+        return root;
     }
