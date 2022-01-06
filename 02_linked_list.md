@@ -11,6 +11,7 @@
 10. [Fold Of Linkedlist](#fold-of-linkedlist)
 11. [Merge Two Sorted Linkedlist](#merge-two-sorted-linkedlist)
 12. [MergeSort Linkedlist](#mergesort-linkedlist)
+13. [Merge K Sorted Linkedlist](#merge-k-sorted-linkedlist)
 
 # Solutions
 
@@ -297,4 +298,24 @@
         ListNode sortedlist2 = mergeSort(head2);
         
         return mergeTwoLists(sortedlist1, sortedlist2);
+    }
+
+### [Merge K Sorted Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/merge-k-sorted-linkedlist/ojquestion)
+
+    public static ListNode mergelists(ListNode[] lists, int si, int ei) {
+        if(si == ei) return lists[si];
+        
+        int mid = (si+ei)/2;
+        
+        ListNode list1 = mergelists(lists, si, mid);
+        ListNode list2 = mergelists(lists, mid+1, ei);
+        
+        return mergeTwoLists(list1, list2);
+        
+    }
+
+    public static ListNode mergeKLists(ListNode[] lists) {
+        if(lists.length == 0) return null;
+        
+        return mergelists(lists, 0, lists.length-1);
     }
