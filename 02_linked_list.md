@@ -13,6 +13,7 @@
 12. [MergeSort Linkedlist](#mergesort-linkedlist)
 13. [Merge K Sorted Linkedlist](#merge-k-sorted-linkedlist)
 14. [Remove Nth Node From End Of Linkedlist](#remove-nth-node-from-end-of-linkedlist)
+15. [Odd Even Linked List](#odd-even-linked-list)
 
 # Solutions
 
@@ -344,4 +345,30 @@
         slow.next = slow.next.next;
 
         return head;
+    }
+
+### [Odd Even Linked List](https://leetcode.com/problems/odd-even-linked-list/)
+
+    public ListNode oddEvenList(ListNode head) {
+        ListNode odd = new ListNode(-1);
+        ListNode even = new ListNode(-1);
+        ListNode oddHead = odd;
+        ListNode evenHead = even;
+        
+        int i=1;
+        ListNode temp = head;
+        while(temp != null){
+            if(i % 2 == 0){
+                even.next = new ListNode(temp.val);
+                even = even.next;
+            } else {
+                odd.next = new ListNode(temp.val);
+                odd = odd.next;
+            }
+            temp = temp.next;
+            i++;
+        }
+        
+        odd.next = evenHead.next;
+        return oddHead.next;
     }
