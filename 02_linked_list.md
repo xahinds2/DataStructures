@@ -10,6 +10,7 @@
 9. [Palindrome Linkedlist](#palindrome-linkedlist)
 10. [Fold Of Linkedlist](#fold-of-linkedlist)
 11. [Merge Two Sorted Linkedlist](#merge-two-sorted-linkedlist)
+12. [Mergesort Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/mergesort-linkedlist/ojquestion)
 
 # Solutions
 
@@ -280,4 +281,20 @@
         temp.next = (l1 != null ? l1 : l2);
         
         return head;
+    }
+
+### [Mergesort Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/mergesort-linkedlist/ojquestion)
+
+    public static ListNode mergeSort(ListNode head) {
+        if (head == null || head.next == null)
+            return head;        
+            
+        ListNode mid = midNode(head);
+        ListNode head2 = mid.next;
+        mid.next = null;
+        
+        ListNode sortedlist1 = mergeSort(head);
+        ListNode sortedlist2 = mergeSort(head2);
+        
+        return mergeTwoLists(sortedlist1, sortedlist2);
     }
