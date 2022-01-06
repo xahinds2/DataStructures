@@ -14,7 +14,7 @@
 13. [Merge K Sorted Linkedlist](#merge-k-sorted-linkedlist)
 14. [Remove Nth Node From End Of Linkedlist](#remove-nth-node-from-end-of-linkedlist)
 15. [Odd Even Linked List](#odd-even-linked-list)
-16. [Reverse Node Of Linkedlist In K Group](reverse-node-of-linkedlist-in-k-group)
+16. [Reverse Node Of Linkedlist In K Group](#reverse-node-of-linkedlist-in-k-group)
 
 # Solutions
 
