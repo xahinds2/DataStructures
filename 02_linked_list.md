@@ -8,6 +8,7 @@
 7. [Split Linked List in Parts](#split-linked-list-in-parts)
 8. [Reverse A Linkedlist](#reverse-a-linkedlist)
 9. [Palindrome Linkedlist](#palindrome-linkedlist)
+10. [Fold Of Linkedlist](#fold-of-linkedlist)
 
 # Solutions
 
@@ -220,4 +221,29 @@
         return true;
     }
     
-### []()
+### [Fold Of Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/fold-of-linkedlist/ojquestion)
+
+    public static void fold(ListNode head) {
+        if (head == null || head.next == null)
+            return;
+
+        ListNode mid = midNode(head);
+        ListNode nhead = mid.next;
+        mid.next = null;
+
+        nhead = reverseList(nhead);
+
+        ListNode c1 = head;
+        ListNode c2 = nhead;
+
+        while (c1 != null && c2 != null) {
+            ListNode f1 = c1.next;
+            ListNode f2 = c2.next;
+
+            c1.next = c2;
+            c2.next = f1;
+
+            c1 = f1;
+            c2 = f2;
+        }
+    }
