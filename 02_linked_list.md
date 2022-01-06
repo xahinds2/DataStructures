@@ -15,6 +15,7 @@
 14. [Remove Nth Node From End Of Linkedlist](#remove-nth-node-from-end-of-linkedlist)
 15. [Odd Even Linked List](#odd-even-linked-list)
 16. [Reverse Node Of Linkedlist In K Group](#reverse-node-of-linkedlist-in-k-group)
+17. [Reverse In Range](#linked-list/reverse-in-range)
 
 # Solutions
 
@@ -393,3 +394,35 @@
         
         return merge(slow, rest);
     }
+
+### [Reverse In Range](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/reverse-in-range/ojquestion)
+
+      public static ListNode reverseInRange(ListNode head, int n, int m) {
+        if (head == null) return null;
+
+        int k = m - n;
+        int i = 1;
+        ListNode start = head, end = head, pre = null;
+        while (end != null && i++ <= k) {
+          end = end.next;
+        }
+        i = 1;
+        while (end != null && i++ < n) {
+          pre = start;
+          start = start.next;
+          end = end.next;
+        }
+        if(pre != null) pre.next = null;
+
+        ListNode c = end.next;
+        end.next = null;
+
+        ListNode b = reverse(start);
+
+        if (head != start) head = merge(head, b);
+        else head = b;
+
+        if (c != null) head = merge(head, c);
+
+        return head;
+      }
