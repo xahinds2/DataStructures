@@ -10,7 +10,7 @@
 9. [Palindrome Linkedlist](#palindrome-linkedlist)
 10. [Fold Of Linkedlist](#fold-of-linkedlist)
 11. [Merge Two Sorted Linkedlist](#merge-two-sorted-linkedlist)
-12. [Mergesort Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/mergesort-linkedlist/ojquestion)
+12. [Mergesort Linkedlist](#mergesort-linkedlist)
 
 # Solutions
 
