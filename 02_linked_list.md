@@ -14,6 +14,7 @@
 13. [Merge K Sorted Linkedlist](#merge-k-sorted-linkedlist)
 14. [Remove Nth Node From End Of Linkedlist](#remove-nth-node-from-end-of-linkedlist)
 15. [Odd Even Linked List](#odd-even-linked-list)
+16. [Reverse Node Of Linkedlist In K Group](reverse-node-of-linkedlist-in-k-group)
 
 # Solutions
 
@@ -371,4 +372,24 @@
         
         odd.next = evenHead.next;
         return oddHead.next;
+    }
+
+### [Reverse Node Of Linkedlist In K Group](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/reverse-node-of-linkedlist-in-k-group/ojquestion)
+
+    public static ListNode reverseInKGroup(ListNode head, int k) {
+        if(head == null) return null;
+        
+        int i=1;
+        ListNode slow = head, fast = head;
+        while(fast != null && i++ < k){
+            fast = fast.next;
+        }
+        
+        if(fast == null) return slow;
+        
+        ListNode rest = reverseInKGroup(fast.next, k);
+        fast.next = null;
+        slow = reverseList(slow);
+        
+        return merge(slow, rest);
     }
