@@ -9,6 +9,7 @@
 8. [Reverse A Linkedlist](#reverse-a-linkedlist)
 9. [Palindrome Linkedlist](#palindrome-linkedlist)
 10. [Fold Of Linkedlist](#fold-of-linkedlist)
+11. [Merge Two Sorted Linkedlist](#merge-two-sorted-linkedlist)
 
 # Solutions
 
@@ -246,4 +247,37 @@
             c1 = f1;
             c2 = f2;
         }
+    }
+
+### [Merge Two Sorted Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/merge-two-sorted-linkedlist/ojquestion#)
+
+    public static ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        if (l1 == null || l2 == null)
+            return l1 != null ? l1 : l2;
+            
+        ListNode temp = null;
+        if(l1.val <= l2.val){
+            temp = l1;
+            l1 = l1.next;
+        } else {
+            temp = l2;
+            l2 = l2.next;
+        }
+        
+        ListNode head = temp;
+        
+        while(l1 != null && l2 != null){
+            if(l1.val <= l2.val){
+                temp.next = l1;
+                l1 = l1.next;
+            } else {
+                temp.next = l2;
+                l2 = l2.next;
+            }
+            temp = temp.next;
+        }
+        
+        temp.next = (l1 != null ? l1 : l2);
+        
+        return head;
     }
