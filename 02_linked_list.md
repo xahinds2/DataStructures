@@ -12,6 +12,7 @@
 11. [Merge Two Sorted Linkedlist](#merge-two-sorted-linkedlist)
 12. [MergeSort Linkedlist](#mergesort-linkedlist)
 13. [Merge K Sorted Linkedlist](#merge-k-sorted-linkedlist)
+14. [Remove Nth Node From End Of Linkedlist](#remove-nth-node-from-end-of-linkedlist)
 
 # Solutions
 
@@ -318,4 +319,29 @@
         if(lists.length == 0) return null;
         
         return mergelists(lists, 0, lists.length-1);
+    }
+
+### [Remove Nth Node From End Of Linkedlist](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/linked-list/remove-nth-node-from-end-of-linkedlist/ojquestion)
+
+
+    public static ListNode removeNthFromEnd(ListNode head, int n) {
+        if(head == null) return head;
+
+        ListNode slow = head;
+        ListNode fast = head;
+
+        while(n-- > 0){
+            fast = fast.next;
+        }
+
+        if(fast == null) return head.next;
+
+        while(fast.next != null){
+            fast = fast.next;
+            slow = slow.next;
+        }
+
+        slow.next = slow.next.next;
+
+        return head;
     }
