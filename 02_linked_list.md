@@ -15,7 +15,7 @@
 14. [Remove Nth Node From End Of Linkedlist](#remove-nth-node-from-end-of-linkedlist)
 15. [Odd Even Linked List](#odd-even-linked-list)
 16. [Reverse Node Of Linkedlist In K Group](#reverse-node-of-linkedlist-in-k-group)
-17. [Reverse In Range](#linked-list/reverse-in-range)
+17. [Reverse In Range](#reverse-in-range)
 
 # Solutions
 
