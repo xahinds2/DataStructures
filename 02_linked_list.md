@@ -17,6 +17,7 @@
 16. [Reverse Node Of Linkedlist In K Group](#reverse-node-of-linkedlist-in-k-group)
 17. [Reverse In Range](#reverse-in-range)
 18. [Linked List Random Node](#linked-list-random-node)
+19. [Add Two Numbers](#problems/add-two-numbers)
 
 # Solutions
 
@@ -443,4 +444,29 @@
     public int getRandom() {
         int idx = (int)(Math.random()*list.size());
         return list.get(idx);
+    }
+
+### [Add Two Numbers](https://leetcode.com/problems/add-two-numbers/)
+
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+
+        ListNode add = new ListNode(-1);
+        ListNode head = add;
+        
+        int carry = 0;
+        
+        while(l1 != null || l2 != null || carry != 0){
+            
+            int sum = carry + (l1 != null ? l1.val : 0) + (l2 != null ? l2.val : 0);
+            carry = sum / 10;
+            sum %= 10;
+            
+            add.next = new ListNode(sum);
+            add = add.next;
+            
+            if(l1 != null ) l1 = l1.next;
+            if(l2 != null ) l2 = l2.next;
+        }
+        
+        return head.next;
     }
