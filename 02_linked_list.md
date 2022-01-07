@@ -17,7 +17,7 @@
 16. [Reverse Node Of Linkedlist In K Group](#reverse-node-of-linkedlist-in-k-group)
 17. [Reverse In Range](#reverse-in-range)
 18. [Linked List Random Node](#linked-list-random-node)
-19. [Add Two Numbers](#problems/add-two-numbers)
+19. [Add Two Numbers](#add-two-numbers)
 
 # Solutions
 
