@@ -16,6 +16,7 @@
 15. [Odd Even Linked List](#odd-even-linked-list)
 16. [Reverse Node Of Linkedlist In K Group](#reverse-node-of-linkedlist-in-k-group)
 17. [Reverse In Range](#reverse-in-range)
+18. [Linked List Random Node](#linked-list-random-node)
 
 # Solutions
 
@@ -426,3 +427,20 @@
 
         return head;
       }
+
+### [Linked List Random Node](https://leetcode.com/problems/linked-list-random-node/)
+
+    ArrayList<Integer> list = new ArrayList<>();
+    public Solution(ListNode head) {
+        while(head != null){
+            list.add(head.val);
+            head = head.next;
+        }
+    }
+    
+    // use array instead of arraylist for better time complexity
+    
+    public int getRandom() {
+        int idx = (int)(Math.random()*list.size());
+        return list.get(idx);
+    }
