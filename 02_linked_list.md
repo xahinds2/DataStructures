@@ -18,7 +18,7 @@
 17. [Reverse In Range](#reverse-in-range)
 18. [Linked List Random Node](#linked-list-random-node)
 19. [Add Two Numbers](#add-two-numbers)
-20. [Sort LinkedList](#Sort-LinkeList)
+20. [Sort LinkedList](#Sort-LinkedList)
 
 # Solutions
 
