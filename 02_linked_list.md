@@ -18,7 +18,7 @@
 17. [Reverse In Range](#reverse-in-range)
 18. [Linked List Random Node](#linked-list-random-node)
 19. [Add Two Numbers](#add-two-numbers)
-20. [Sort LinkeList](#Sort-LinkeList)
+20. [Sort LinkedList](#Sort-LinkeList)
 
 # Solutions
 
@@ -472,7 +472,7 @@
         return head.next;
     }
 
-### [Sort LinkeList](https://practice.geeksforgeeks.org/problems/linked-list-that-is-sorted-alternatingly/1#)
+### [Sort LinkedList](https://practice.geeksforgeeks.org/problems/linked-list-that-is-sorted-alternatingly/1#)
 
     public Node sort(Node head){
         //your code here, return the head of the sorted list
