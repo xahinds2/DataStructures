@@ -18,6 +18,7 @@
 17. [Reverse In Range](#reverse-in-range)
 18. [Linked List Random Node](#linked-list-random-node)
 19. [Add Two Numbers](#add-two-numbers)
+20. [Sort LinkeList](#Sort-LinkeList)
 
 # Solutions
 
@@ -469,4 +470,26 @@
         }
         
         return head.next;
+    }
+
+### [Sort LinkeList](https://practice.geeksforgeeks.org/problems/linked-list-that-is-sorted-alternatingly/1#)
+
+    public Node sort(Node head){
+        //your code here, return the head of the sorted list
+        Queue<Integer> q = new PriorityQueue<>();
+        
+        while(head != null){
+            q.add(head.data);
+            head = head.next;
+        }
+        
+        head = new Node(q.poll());
+        Node dummy = head;
+        
+        while(q.size() > 0){
+            head.next = new Node(q.poll());
+            head = head.next;
+        }
+        
+        return dummy;
     }
