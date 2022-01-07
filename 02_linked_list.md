@@ -19,6 +19,7 @@
 18. [Linked List Random Node](#linked-list-random-node)
 19. [Add Two Numbers](#add-two-numbers)
 20. [Sort LinkedList](#Sort-LinkedList)
+21. [Split Singly Linked List Alternatingly](#split-singly-linked-list-alternatingly)
 
 # Solutions
 
@@ -492,4 +493,31 @@
         }
         
         return dummy;
+    }
+
+### [Split Singly Linked List Alternatingly](https://practice.geeksforgeeks.org/problems/split-singly-linked-list-alternatingly/1)
+
+    public Node alternatingSplitList(Node head){
+        Node c = new Node(-1);
+        Node d = new Node(-1);
+        
+        Node l1 = c;
+        Node l2 = d;
+        
+        int i = 0;
+        while(head != null){
+            if(i % 2 == 0){
+                c.next = new Node(head.data);
+                c = c.next;
+            } else {
+                d.next = new Node(head.data);
+                d = d.next;
+            }
+            head = head.next;
+            i++;
+        }
+        
+        GFG obj = new GFG();
+        obj.a = l1.next;
+        obj.b = l2.next;
     }
