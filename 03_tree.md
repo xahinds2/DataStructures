@@ -1,6 +1,6 @@
 # Tree
 1. [Path Sum III](#path-sum-iii)
-
+2. [Binary Tree Right Side View]()
 
 
 # Solutions
@@ -24,4 +24,26 @@
         map.put(sum, map.get(sum)-1);
         
         return ans;
+    }
+
+### [Binary Tree Right Side View]()
+
+    public List<Integer> rightSideView(TreeNode root) {
+    
+        if(root == null) return new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+        
+        while(q.size() > 0){
+            int s = q.size();
+            for(int i=0; i<s; i++){
+                TreeNode node = q.poll();
+                if(i == s-1) list.add(node.val);
+                
+                if(node.left != null) q.add(node.left);
+                if(node.right != null) q.add(node.right);
+            }
+        }
+        return list;
     }
