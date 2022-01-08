@@ -1,6 +1,6 @@
 # Tree
 1. [Path Sum III](#path-sum-iii)
-2. [Binary Tree Right Side View]()
+2. [Binary Tree Right Side View](#binary-tree-right-side-view)
 
 
 # Solutions
@@ -26,7 +26,7 @@
         return ans;
     }
 
-### [Binary Tree Right Side View]()
+### [Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/)
 
     public List<Integer> rightSideView(TreeNode root) {
     
