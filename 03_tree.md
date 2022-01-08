@@ -1,6 +1,7 @@
 # Tree
 1. [Path Sum III](#path-sum-iii)
 2. [Binary Tree Right Side View](#binary-tree-right-side-view)
+3. [Maximum Width of Binary Tree](#maximum-width-of-binary-tree)
 
 
 # Solutions
@@ -46,4 +47,40 @@
             }
         }
         return list;
+    }
+
+### [Maximum Width of Binary Tree](https://leetcode.com/problems/maximum-width-of-binary-tree/)
+
+    public int widthOfBinaryTree(TreeNode root) {
+        if(root == null) return 0;
+
+        Queue<Pair> q = new LinkedList<>();
+        int maxWidth = 0;
+        q.add(new Pair(root, 0));
+        
+        while(q.size() > 0){
+            Pair first = q.peek();
+            Pair curr = null;
+            int s = q.size();
+            while(s-- > 0){
+                curr = q.poll();
+                TreeNode node = curr.key;
+                int idx = curr.idx;
+                if(node.left != null) q.offer(new Pair(node.left, 2*idx));
+                if(node.right != null) q.offer(new Pair(node.right, 2*idx + 1));
+            }
+            maxWidth = Math.max(maxWidth, curr.idx - first.idx + 1);
+        }
+        
+        return maxWidth;
+    }
+    
+    public class Pair{
+        TreeNode key;
+        int idx;
+        
+        Pair(TreeNode key, int idx){
+            this.key = key;
+            this.idx = idx;
+        }
     }
