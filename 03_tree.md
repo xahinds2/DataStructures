@@ -3,7 +3,7 @@
 2. [Binary Tree Right Side View](#binary-tree-right-side-view)
 3. [Maximum Width of Binary Tree](#maximum-width-of-binary-tree)
 4. [Binary Tree Tilt](#binary-tree-tilt)
-5. [Two Sum IV - Input is a BST](#two-sum-iv-input-is-a-bst)
+5. [Two Sum IV - Input is a BST](#two-sum-iv---input-is-a-bst)
 
 
 # Solutions
