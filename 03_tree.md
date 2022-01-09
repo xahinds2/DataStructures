@@ -4,6 +4,7 @@
 3. [Maximum Width of Binary Tree](#maximum-width-of-binary-tree)
 4. [Binary Tree Tilt](#binary-tree-tilt)
 5. [Two Sum IV - Input is a BST](#two-sum-iv---input-is-a-bst)
+6. [Minimum Absolute Difference in BST](#minimum-absolute-difference-in-bst)
 
 
 # Solutions
@@ -124,4 +125,23 @@
         
         boolean right = addtoSet(root.right, set, k);
         return right;
+    }
+
+### [Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/)
+
+    int min = Integer.MAX_VALUE;
+    Integer prev = null;
+    
+    public int getMinimumDifference(TreeNode root) {
+        if(root == null) return min;
+        
+        getMinimumDifference(root.left);
+        
+
+        if(prev != null) min = Math.min(min, root.val - prev);
+        prev = root.val;
+        
+        getMinimumDifference(root.right);
+        
+        return min;
     }
