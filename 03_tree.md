@@ -3,6 +3,7 @@
 2. [Binary Tree Right Side View](#binary-tree-right-side-view)
 3. [Maximum Width of Binary Tree](#maximum-width-of-binary-tree)
 4. [Binary Tree Tilt](#binary-tree-tilt)
+5. [Two Sum IV - Input is a BST](#two-sum-iv-input-is-a-bst)
 
 
 # Solutions
@@ -101,4 +102,26 @@
         tilt += Math.abs(lsum - rsum);
         return root.val + lsum + rsum ;
         
+    }
+
+### [Two Sum IV - Input is a BST](https://leetcode.com/problems/two-sum-iv-input-is-a-bst/)
+
+    public boolean findTarget(TreeNode root, int k) {
+        HashSet<Integer> set = new HashSet<>();
+        boolean ans = addtoSet(root, set, k);
+        return ans;
+    }
+    
+    public boolean addtoSet(TreeNode root, HashSet<Integer> set, int k){
+        if(root == null) return false;
+        
+        if(set.contains(k - root.val)) return true;
+        
+        set.add(root.val);
+        
+        boolean left = addtoSet(root.left, set, k);
+        if(left) return left;
+        
+        boolean right = addtoSet(root.right, set, k);
+        return right;
     }
