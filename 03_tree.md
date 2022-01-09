@@ -5,6 +5,7 @@
 4. [Binary Tree Tilt](#binary-tree-tilt)
 5. [Two Sum IV - Input is a BST](#two-sum-iv---input-is-a-bst)
 6. [Minimum Absolute Difference in BST](#minimum-absolute-difference-in-bst)
+7. [Delete Node in a BST](#delete-node-in-a-bst)
 
 
 # Solutions
@@ -144,4 +145,31 @@
         getMinimumDifference(root.right);
         
         return min;
+    }
+
+### [Delete Node in a BST](https://leetcode.com/problems/delete-node-in-a-bst/)
+
+    public TreeNode deleteNode(TreeNode root, int key) {
+        if(root == null) return root;
+        
+        if(key < root.val) root.left = deleteNode(root.left, key);
+        else if(key > root.val) root.right = deleteNode(root.right, key);
+        
+        else if(root.val == key){
+            
+            if(root.left == null) return root.right;
+            if(root.right == null) return root.left;
+            
+            TreeNode min = findleft(root.right);
+            TreeNode left = root.left;
+            root = root.right;
+            min.left = left;
+        }
+        
+        return root;
+    }
+    
+    public TreeNode findleft(TreeNode root){
+        while(root.left != null) root = root.left;
+        return root;
     }
