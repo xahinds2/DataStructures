@@ -9,6 +9,7 @@
 8. [All Elements in Two Binary Search Trees](#all-elements-in-two-binary-search-trees)
 9. [Path Sum II](#path-sum-ii)
 10. [Sum Root to Leaf Numbers](#sum-root-to-leaf-numbers)
+11. [Binary Tree Maximum Path Sum](#binary-tree-maximum-path-sum)
 
 
 # Solutions
@@ -249,4 +250,20 @@
         help(root.left, psum);
         help(root.right, psum);
     }
+
+### [Binary Tree Maximum Path Sum](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+
+    int max = Integer.MIN_VALUE;
+    public int maxPathSum(TreeNode root) {
+        help(root);
+        return max;
+    }
     
+    public int help(TreeNode root){
+        if(root == null) return 0;
+        
+        int lsum = Math.max(help(root.left), 0);
+        int rsum = Math.max(help(root.right), 0);
+        max = Math.max(max, root.val + lsum + rsum);
+        return root.val + Math.max(lsum, rsum);
+    }
