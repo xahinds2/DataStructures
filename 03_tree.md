@@ -7,6 +7,7 @@
 6. [Minimum Absolute Difference in BST](#minimum-absolute-difference-in-bst)
 7. [Delete Node in a BST](#delete-node-in-a-bst)
 8. [All Elements in Two Binary Search Trees](#all-elements-in-two-binary-search-trees)
+9. [Path Sum II](path-sum-ii)
 
 
 # Solutions
@@ -204,4 +205,26 @@
         inorder(root.left, l);
         l.add(root.val);
         inorder(root.right, l);
+    }
+
+### [Path Sum II](https://leetcode.com/problems/path-sum-ii/)
+
+    List<List<Integer>> lists = new ArrayList<>();
+    public List<List<Integer>> pathSum(TreeNode root, int targetSum) {
+        if(root == null) return lists;
+        help(root, targetSum, new ArrayList<>());
+        return lists;
+    }
+    
+    public void help(TreeNode root, int targetSum, List<Integer> list){
+        if(root == null) return;
+        
+        list.add(root.val);
+        if(root.left == null && root.right == null && root.val == targetSum)
+            lists.add(new ArrayList<>(list));
+        
+        help(root.left, targetSum-root.val, list);
+        help(root.right, targetSum-root.val, list);
+        
+        list.remove((list.size()-1));
     }
