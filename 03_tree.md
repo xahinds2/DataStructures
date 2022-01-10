@@ -6,6 +6,7 @@
 5. [Two Sum IV - Input is a BST](#two-sum-iv---input-is-a-bst)
 6. [Minimum Absolute Difference in BST](#minimum-absolute-difference-in-bst)
 7. [Delete Node in a BST](#delete-node-in-a-bst)
+8. [All Elements in Two Binary Search Trees](#all-elements-in-two-binary-search-trees)
 
 
 # Solutions
@@ -172,4 +173,35 @@
     public TreeNode findleft(TreeNode root){
         while(root.left != null) root = root.left;
         return root;
+    }
+
+### [All Elements in Two Binary Search Trees](https://leetcode.com/problems/all-elements-in-two-binary-search-trees/)
+
+    public List<Integer> getAllElements(TreeNode root1, TreeNode root2) {
+        
+        List<Integer> l1 = new LinkedList<>();
+        List<Integer> l2 = new LinkedList<>();
+        inorder(root1, l1);
+        inorder(root2, l2);
+        
+        List<Integer> list = new ArrayList<>();
+        
+        while(l1.size() > 0 && l2.size()>0){
+            if(l1.get(0) < l2.get(0)) list.add(l1.remove(0));
+            else list.add(l2.remove(0));
+        }
+        
+        while(l1.size() > 0) list.add(l1.remove(0));
+
+        while(l2.size() > 0) list.add(l2.remove(0));
+
+        return list;
+    }
+    
+    public void inorder(TreeNode root, List<Integer> l){
+        if(root == null) return;
+        
+        inorder(root.left, l);
+        l.add(root.val);
+        inorder(root.right, l);
     }
