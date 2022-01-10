@@ -7,7 +7,8 @@
 6. [Minimum Absolute Difference in BST](#minimum-absolute-difference-in-bst)
 7. [Delete Node in a BST](#delete-node-in-a-bst)
 8. [All Elements in Two Binary Search Trees](#all-elements-in-two-binary-search-trees)
-9. [Path Sum II](path-sum-ii)
+9. [Path Sum II](#path-sum-ii)
+10. [Sum Root to Leaf Numbers](#sum-root-to-leaf-numbers)
 
 
 # Solutions
@@ -228,3 +229,24 @@
         
         list.remove((list.size()-1));
     }
+
+### [Sum Root to Leaf Numbers](https://leetcode.com/problems/sum-root-to-leaf-numbers/)
+
+    int sum;
+    public int sumNumbers(TreeNode root) {
+        if(root == null) return 0;
+        help(root, 0);
+        return sum;
+    }
+    
+    public void help(TreeNode root, int psum){
+        if(root == null) return;
+        
+        psum = psum * 10 + root.val;
+        if(root.left == null && root.right == null)
+            sum += psum;
+        
+        help(root.left, psum);
+        help(root.right, psum);
+    }
+    
