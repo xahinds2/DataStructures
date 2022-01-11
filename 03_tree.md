@@ -272,7 +272,7 @@
         return root.val + Math.max(lsum, rsum);
     }
 
-### [Node to Root Path](no link hehe)
+### [Node to Root Path](nolink)
 
     public List<TreeNode> nodeToRootPath(TreeNode root, TreeNode a){
         if(root == null) return new ArrayList<>();
