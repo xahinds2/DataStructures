@@ -10,6 +10,10 @@
 9. [Path Sum II](#path-sum-ii)
 10. [Sum Root to Leaf Numbers](#sum-root-to-leaf-numbers)
 11. [Binary Tree Maximum Path Sum](#binary-tree-maximum-path-sum)
+12. [Node to Root Path](#Node-to-Root-Path)
+13. [Lowest Common Ancestor of a Binary Tree](#lowest-common-ancestor-of-a-binary-tree)
+14. [Lowest Common Ancestor of a Binary Search Tree](#lowest-common-ancestor-of-a-binary-search-tree)
+15. [Lowest Common Ancestor of Deepest Leaves](#lowest-common-ancestor-of-deepest-leaves)
 
 
 # Solutions
@@ -266,4 +270,76 @@
         int rsum = Math.max(help(root.right), 0);
         max = Math.max(max, root.val + lsum + rsum);
         return root.val + Math.max(lsum, rsum);
+    }
+
+### [Node to Root Path](no link hehe)
+
+    public List<TreeNode> nodeToRootPath(TreeNode root, TreeNode a){
+        if(root == null) return new ArrayList<>();
+        
+        if(root == a){
+            List<TreeNode> list = new ArrayList<>();
+            list.add(root);
+            return list;
+        }
+        
+        List<TreeNode> llist = nodeToRootPath(root.left, a);
+        if(llist.size() > 0){
+            llist.add(root);
+            return llist;
+        }
+        
+        List<TreeNode> rlist = nodeToRootPath(root.right, a);
+        if(rlist.size() > 0){
+            rlist.add(root);
+            return rlist;
+        }
+        
+        return new ArrayList<>();
+      }
+
+### [Lowest Common Ancestor of a Binary Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/)
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null) return root;
+        
+        List<TreeNode> pathp = nodeToRootPath(root, p);
+        List<TreeNode> pathq = nodeToRootPath(root, q);
+        
+        while(pathp.size() < pathq.size()) pathq.remove(0);
+        while(pathp.size() > pathq.size()) pathp.remove(0);
+        
+        for(int i=0; i<pathp.size(); i++)
+            if(pathp.get(i) == pathq.get(i))
+                return pathp.get(i);
+        
+        return null;
+    }
+      
+### [Lowest Common Ancestor of a Binary Search Tree](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        if(root == null) return root;
+        
+        if(p.val < root.val && q.val < root.val) return lowestCommonAncestor(root.left, p, q);
+        else if(p.val > root.val && q.val > root.val) return lowestCommonAncestor(root.right, p, q);
+        else return root;
+    }
+
+### [Lowest Common Ancestor of Deepest Leaves](https://leetcode.com/problems/lowest-common-ancestor-of-deepest-leaves/)
+
+    public TreeNode lcaDeepestLeaves(TreeNode root) {
+		if(root == null) return root;
+        
+		int left = depth(root.left);
+		int right = depth(root.right);
+        
+		if(left == right) return root;
+		else if(left > right) return lcaDeepestLeaves(root.left);
+		else return lcaDeepestLeaves(root.right);
+    }
+    
+    public int depth(TreeNode root){
+        if(root == null) return 0;
+        return 1 + Math.max(depth(root.left), depth(root.right));
     }
