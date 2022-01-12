@@ -15,6 +15,8 @@
 14. [Lowest Common Ancestor of a Binary Search Tree](#lowest-common-ancestor-of-a-binary-search-tree)
 15. [Lowest Common Ancestor of Deepest Leaves](#lowest-common-ancestor-of-deepest-leaves)
 16. [Flatten Binary Tree to Linked List](#flatten-binary-tree-to-linked-list)
+17. [Cousins in Binary Tree](#cousins-in-binary-tree)
+18. [Maximum Difference Between Node and Ancestor](#maximum-difference-between-node-and-ancestor)
 
 # Solutions
 
@@ -368,4 +370,60 @@
         root.right = q.poll();
         root.left = null;
         if(q.size() > 0) makelist(root.right, q);
+    }
+
+### [Cousins in Binary Tree](https://leetcode.com/problems/cousins-in-binary-tree/)
+
+    public boolean isCousins(TreeNode root, int x, int y) {
+        int[] depths = new int[2];
+        int[] parents = new int[2];
+        
+        find(root, depths, parents, x, y, 0);
+        
+        if(depths[0] != depths[1]) return false;
+        
+        if(parents[0] == parents[1]) return false;
+        
+        return true;
+    }
+    
+    public void find(TreeNode root, int[] depths, int[] parents, int x, int y, int d){
+        if(root == null) return;
+        
+        if(root.right != null){
+            if(root.right.val == x) parents[0] = root.val;
+            if(root.right.val == y) parents[1] = root.val;
+        }
+        
+        if(root.left != null){
+            if(root.left.val == x) parents[0] = root.val;
+            if(root.left.val == y) parents[1] = root.val;
+        }
+
+        if(root.val == x) depths[0] = d;
+        if(root.val == y) depths[1] = d;
+        
+        find(root.left, depths, parents, x, y, d+1);
+        find(root.right, depths, parents, x, y, d+1);
+    }
+    
+### [Maximum Difference Between Node and Ancestor](https://leetcode.com/problems/maximum-difference-between-node-and-ancestor/)
+
+    int res = 0;
+    public int maxAncestorDiff(TreeNode root) {
+        if(root == null) return 0;
+        dfs(root, root.val, root.val);
+        return res;
+    }
+    
+    public void dfs(TreeNode root, int min, int max){
+        if(root == null) return;
+        
+        min = Math.min(root.val, min);
+        max = Math.max(root.val, max);
+        
+        res = Math.max(res, max-min);
+        
+        dfs(root.left, min, max);
+        dfs(root.right, min, max);
     }
