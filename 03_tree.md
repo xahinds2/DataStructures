@@ -17,6 +17,7 @@
 16. [Flatten Binary Tree to Linked List](#flatten-binary-tree-to-linked-list)
 17. [Cousins in Binary Tree](#cousins-in-binary-tree)
 18. [Maximum Difference Between Node and Ancestor](#maximum-difference-between-node-and-ancestor)
+19. [All Nodes Distance K in Binary Tree](#all-nodes-distance-k-in-binary-tree)
 
 # Solutions
 
@@ -426,4 +427,41 @@
         
         dfs(root.left, min, max);
         dfs(root.right, min, max);
+    }
+
+### [All Nodes Distance K in Binary Tree](https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/)
+
+    public List<Integer> distanceK(TreeNode root, TreeNode target, int K) {
+        Map<TreeNode, Integer> map = new HashMap<>();
+        List<Integer> res = new LinkedList<>();
+        find(root, target, map);
+        dfs(root, target, K, 0, res, map);
+        return res;
+    }
+    
+    public int find(TreeNode root, TreeNode target, Map<TreeNode, Integer> map) {
+        if (root == null) return -1;
+        if (root == target) {
+            map.put(root, 0);
+            return 0;
+        }
+        int left = find(root.left, target, map);
+        if (left >= 0) {
+            map.put(root, left + 1);
+            return left + 1;
+        }
+		int right = find(root.right, target, map);
+		if (right >= 0) {
+            map.put(root, right + 1);
+            return right + 1;
+        }
+        return -1;
+    }
+    
+    public void dfs(TreeNode root, TreeNode target, int K, int length, List<Integer> res, Map<TreeNode, Integer> map) {
+        if (root == null) return;
+        if (map.containsKey(root)) length = map.get(root);
+        if (length == K) res.add(root.val);
+        dfs(root.left, target, K, length + 1, res, map);
+        dfs(root.right, target, K, length + 1, res, map);
     }
