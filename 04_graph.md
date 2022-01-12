@@ -1,6 +1,6 @@
 # Graph
 
-1. [Coloring A Border](coloring-a-border)
+1. [Coloring A Border](#coloring-a-border)
 
 # Solutions
 
