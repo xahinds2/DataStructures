@@ -14,7 +14,7 @@
 13. [Lowest Common Ancestor of a Binary Tree](#lowest-common-ancestor-of-a-binary-tree)
 14. [Lowest Common Ancestor of a Binary Search Tree](#lowest-common-ancestor-of-a-binary-search-tree)
 15. [Lowest Common Ancestor of Deepest Leaves](#lowest-common-ancestor-of-deepest-leaves)
-
+16. [Flatten Binary Tree to Linked List](#flatten-binary-tree-to-linked-list)
 
 # Solutions
 
@@ -342,4 +342,30 @@
     public int depth(TreeNode root){
         if(root == null) return 0;
         return 1 + Math.max(depth(root.left), depth(root.right));
+    }
+
+### [Flatten Binary Tree to Linked List](https://leetcode.com/problems/flatten-binary-tree-to-linked-list/)
+
+    public void flatten(TreeNode root) {
+        if(root == null) return;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        makeque(root, q);
+
+        root = q.poll();
+        root.left = null;
+        makelist(root, q);
+    }
+    
+    public void makeque(TreeNode root, Queue<TreeNode> q){
+        if(root == null) return;
+        q.add(root);
+        makeque(root.left, q);
+        makeque(root.right, q);
+    }
+    
+    public void makelist(TreeNode root, Queue<TreeNode> q){
+        root.right = q.poll();
+        root.left = null;
+        if(q.size() > 0) makelist(root.right, q);
     }
