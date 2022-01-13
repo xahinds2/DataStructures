@@ -4,6 +4,7 @@
 2. [Number of Enclaves](#number-of-enclaves)
 3. [Number Of Distinct Island](#number-of-distinct-island)
 4. [01 Matrix](#01-matrix)
+5. [Rotting Oranges](#rotting-oranges)
 
 # Solutions
 
@@ -159,3 +160,53 @@
     // using that if it encounters -1 in the neighbor then we will make it 0 + 1;
     // and also add the index of that -1, and search for its neighbor and mark it 1+1
     // like this we can do it for every elements.
+
+### [Rotting Oranges](https://leetcode.com/problems/rotting-oranges/)
+
+    public int orangesRotting(int[][] mat) {
+        boolean notwos = false;
+        Queue<Pair> q = new LinkedList<>();
+        
+        for(int i=0; i<mat.length; i++)
+            for(int j=0; j<mat[0].length; j++)
+                if(mat[i][j] == 2){
+                    q.add(new Pair(i, j));
+                }
+        
+        if(q.size() == 0 ) notwos = true;
+        
+        int time = -1;
+        while(q.size() > 0){
+            int size = q.size();
+            for(int i = 0; i< size; i++){
+                Pair c = q.remove();
+                dfs(mat, c.x, c.y, q);
+            }
+            time++;
+        }
+        
+        for(int i=0; i<mat.length; i++)
+            for(int j=0; j<mat[0].length; j++)
+                if(mat[i][j] == 1){
+                    return -1;
+                }
+        
+        if(notwos) return 0;
+        return time;
+        
+    }
+
+    public void dfs(int[][] mat, int i, int j, Queue<Pair> q){
+        int nrow = mat.length;
+        int ncol = mat[0].length;
+
+        int[][] dirs = {{-1,0},{1,0},{0,1},{0,-1}};
+        for(int[] dir : dirs){
+            int m = i + dir[0];
+            int n = j + dir[1];
+            if(m >= 0 && n >= 0 && m < nrow && n < ncol && mat[m][n] == 1){
+                mat[m][n] = 2;
+                q.add(new Pair(m, n));
+            }
+        }
+    }
