@@ -7,7 +7,7 @@
 5. [Rotting Oranges](#rotting-oranges)
 6. [As Far from Land as Possible](#as-far-from-land-as-possible)
 7. [Shortest Bridge](#shortest-bridge)
-8.  [Bus Routes Hard](url)
+8.  [Bus Routes Hard](#bus-routes)
 9.  [Sliding Puzzle Hard](url)
 10.  [Minimum Number Of Swaps Required To Sort An Array Hard](url)
 11.  [Pepcoder And Reversing Medium](url)
@@ -360,3 +360,57 @@
     // Using dfs add all the '1' of a island 
     // use bfs to search for '1' of another island 
     // return step on getting
+
+### [Bus Routes](https://leetcode.com/problems/bus-routes/)
+
+    public static int numBusesToDestination(int[][] routes, int S, int T) {
+
+        HashMap<Integer, ArrayList<Integer>> stopmap = new HashMap<>();
+        for (int i = 0; i < routes.length; i++) {
+            for (int j = 0; j < routes[i].length; j++) {
+                int busstop = routes[i][j];
+                ArrayList<Integer> busno = stopmap.getOrDefault(busstop, new ArrayList<>());
+                busno.add(i);
+                stopmap.put(busstop, busno);
+            }
+        }
+
+        LinkedList<Integer> queue = new LinkedList<>();
+        HashSet<Integer> stopvis = new HashSet<>();
+        HashSet<Integer> busnovis = new HashSet<>();
+
+        queue.addLast(S);
+        stopvis.add(S);
+        int level = 0;
+        while (queue.size() > 0) {
+            int size = queue.size();
+            while (size-- > 0) {
+                Integer rem = queue.removeFirst();
+                if (rem == T) return level;
+
+                ArrayList<Integer> buses = stopmap.get(rem);
+                for (int bus : buses) {
+                    if (busnovis.contains(bus) == true) continue;
+
+                    int[] arr = routes[bus];
+                    for (int stop : arr) {
+                        if (stopvis.contains(stop) == true) continue;
+                        
+                        queue.addLast(stop);
+                        stopvis.add(stop);
+                    }
+                    busnovis.add(bus);
+                }
+            }
+            
+            level++;
+        }
+        
+        return -1;
+    }
+    
+    // Logic :
+    // map a correspoing list of buses accross all bus stops
+    // start travelling from source and check for buses using the map created
+    // trvel to all unvisited stops at one level and mark them visited
+    // like this keep travelling until destination is reach and return the level
