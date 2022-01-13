@@ -154,6 +154,7 @@
             }
         }
     }
+    
     // Logic : 
     // we will change the 1 to -1 and add all th zeros coordinates in q by uing pair class
     // we will travel in the q using whil loop
@@ -210,3 +211,10 @@
             }
         }
     }
+
+    // Logic : 
+    // we will add all th 2's coordinates in q by uing pair class
+    // travel in the q using whil loop
+    // using that if it encounters 1 in the neighbor then we will make it 2;
+    // and also add the index of that 1, and search for its neighbor and mark it 2.
+    // like this we can do it for every elements.
