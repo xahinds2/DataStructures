@@ -7,7 +7,7 @@
 5. [Rotting Oranges](#rotting-oranges)
 6. [As Far from Land as Possible](#as-far-from-land-as-possible)
 7. [Shortest Bridge](#shortest-bridge)
-8.  [Bus Routes Hard](#bus-routes)
+8.  [Bus Routes](#bus-routes)
 9.  [Sliding Puzzle Hard](url)
 10.  [Minimum Number Of Swaps Required To Sort An Array Hard](url)
 11.  [Pepcoder And Reversing Medium](url)
