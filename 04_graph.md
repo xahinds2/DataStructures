@@ -3,6 +3,7 @@
 1. [Coloring A Border](#coloring-a-border)
 2. [Number of Enclaves](#number-of-enclaves)
 3. [Number Of Distinct Island](#number-of-distinct-island)
+4. [01 Matrix](#01-matrix)
 
 # Solutions
 
@@ -119,3 +120,51 @@
         psf.append("b");
 
       }
+
+### [01 Matrix](https://leetcode.com/problems/01-matrix/)
+
+/*Logic : 
+1. we will change the 1 to -1 and add all th zeros coordinates in q by uing pair class
+2. we will travel in the q using whil loop
+3. using that if it encounters -1 in the neighbor then we will make it 0 + 1;
+4. and also add the index of that -1, and search for its neighbor and mark it 1+1
+5. like this we can do it for every elements.
+*/
+
+    class Pair{
+        int x;
+        int y;
+        Pair(int x, int y){
+            this.x = x;
+            this.y = y;
+        }
+    }
+    public int[][] updateMatrix(int[][] mat) {
+        Queue<Pair> q = new LinkedList<>();
+        for(int i=0; i<mat.length; i++)
+            for(int j=0; j<mat[0].length; j++)
+                if(mat[i][j] == 0) q.add(new Pair(i, j));
+                else mat[i][j] = -1;
+
+        while(q.size() > 0){
+            Pair rem = q.remove();
+            dfs(mat, rem.x, rem.y, q);
+        }
+        
+        return mat;
+    }
+    
+    public void dfs(int[][] mat, int i, int j, Queue<Pair> q){
+        int nrow = mat.length;
+        int ncol = mat[0].length;
+        
+        int[][] dirs = {{-1,0},{1,0},{0,1},{0,-1}};
+        for(int[] dir : dirs){
+            int m = i + dir[0];
+            int n = j + dir[1];
+            if(m >= 0 && n >= 0 && m < nrow && n < ncol && mat[m][n] == -1){
+                mat[m][n] = mat[i][j] + 1;
+                q.add(new Pair(m, n));
+            }
+        }
+    }
