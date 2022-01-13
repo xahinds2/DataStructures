@@ -6,6 +6,7 @@
 4. [01 Matrix](#01-matrix)
 5. [Rotting Oranges](#rotting-oranges)
 6. [As Far from Land as Possible](#as-far-from-land-as-possible)
+7. [Shortest Bridge](#shortest-bridge)
 
 # Solutions
 
