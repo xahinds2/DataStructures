@@ -123,22 +123,7 @@
 
 ### [01 Matrix](https://leetcode.com/problems/01-matrix/)
 
-/*Logic : 
-1. we will change the 1 to -1 and add all th zeros coordinates in q by uing pair class
-2. we will travel in the q using whil loop
-3. using that if it encounters -1 in the neighbor then we will make it 0 + 1;
-4. and also add the index of that -1, and search for its neighbor and mark it 1+1
-5. like this we can do it for every elements.
-*/
 
-    class Pair{
-        int x;
-        int y;
-        Pair(int x, int y){
-            this.x = x;
-            this.y = y;
-        }
-    }
     public int[][] updateMatrix(int[][] mat) {
         Queue<Pair> q = new LinkedList<>();
         for(int i=0; i<mat.length; i++)
@@ -168,3 +153,9 @@
             }
         }
     }
+    // Logic : 
+    // we will change the 1 to -1 and add all th zeros coordinates in q by uing pair class
+    // we will travel in the q using whil loop
+    // using that if it encounters -1 in the neighbor then we will make it 0 + 1;
+    // and also add the index of that -1, and search for its neighbor and mark it 1+1
+    // like this we can do it for every elements.
