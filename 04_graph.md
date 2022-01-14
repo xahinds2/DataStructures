@@ -9,7 +9,7 @@
 7. [Shortest Bridge](#shortest-bridge)
 8.  [Bus Routes](#bus-routes)
 9.  [Sliding Puzzle Hard](#sliding-puzzle)
-10.  [Minimum Number Of Swaps Required To Sort An Array Hard](url)
+10.  [Minimum Number Of Swaps Required To Sort An Array Hard](#minimum-number-of-swaps-required-to-sort-an-array)
 11.  [Pepcoder And Reversing Medium](url)
 12.  [Pepcoding Course Schedule Medium](url)
 13.  [Alien Dictionary Medium](url)
@@ -463,3 +463,46 @@
     // Logic 
     // store all the possibilities in a q and check them all
     // convert the input to string for better performance
+
+### [Minimum Number Of Swaps Required To Sort An Array](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/minimum-number-of-swaps-required-to-sort-an-array-official/ojquestion)
+
+      public static int minSwaps(int[] arr1) {
+          Pair[] arr = new Pair[arr1.length];
+          for(int i=0 ; i<arr1.length; i++){
+              arr[i] = new Pair(arr1[i], i);
+          }
+
+          Arrays.sort(arr);
+          boolean[] vis = new boolean[arr.length];
+
+          int count = 0;
+          for(int i=0; i<arr.length; i++){
+              if(vis[i] == true || i == arr[i].idx){
+                  continue;
+              } else {
+                  int j = i;
+                  int clen = 0;
+                  while(vis[j] == false){
+                      clen++;
+                      vis[j] = true;
+                      j = arr[j].idx;
+                  }
+                  count += (clen-1);
+              }
+          }
+          return count;
+      }
+      
+      // Logic :
+      // make a arr of pair datatype which also store the index
+      // for eg : [2 3 1] -----> [(2,0), (3,1), (1,2)] 
+      // now sort it and loop on it [(1,2), (2,0),(3,1)]
+      // we will find that 1 was on 2th index so we will use while loop and detect where it stops
+      // 1 was on 2th, so we will check 2 was visited or not and we will go on until we find smthing visited
+      // visited means we have encountered a cycle
+      // we will implement clen variable on that while loop to check the cycle len
+      // add the (clen-1) len to totl count
+      // for eg to sort 3 elements we need 2 swaps
+      // so to sort a cycle of clen we need clen-1 swaps
+      
+      
