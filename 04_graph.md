@@ -8,7 +8,7 @@
 6. [As Far from Land as Possible](#as-far-from-land-as-possible)
 7. [Shortest Bridge](#shortest-bridge)
 8.  [Bus Routes](#bus-routes)
-9.  [Sliding Puzzle Hard](url)
+9.  [Sliding Puzzle Hard](#sliding-puzzle)
 10.  [Minimum Number Of Swaps Required To Sort An Array Hard](url)
 11.  [Pepcoder And Reversing Medium](url)
 12.  [Pepcoding Course Schedule Medium](url)
@@ -414,3 +414,52 @@
     // start travelling from source and check for buses using the map created
     // trvel to all unvisited stops at one level and mark them visited
     // like this keep travelling until destination is reach and return the level
+
+### [Sliding Puzzle](https://leetcode.com/problems/sliding-puzzle/)
+
+    public int slidingPuzzle(int[][] board) {
+        
+        int[][] dirs = {{1,3},{0,2,4},{1,5},{0,4},{1,3,5},{2,4}};
+        String tar = "123450";
+        String src = "";
+        
+        for(int i=0; i<board.length; i++)
+            for(int val : board[i]){
+                src += val;
+            }
+        
+        HashSet<String> set = new HashSet<>();
+        Queue<String> q = new LinkedList<>();
+        q.offer(src);
+        set.add(src);
+        
+        int level = 0;
+        while(q.size() > 0){
+            int size = q.size();
+            while(size-- > 0){
+                String str = q.poll();
+                if(str.equals(tar)) return level;
+                int i = str.indexOf('0');
+                for(int j : dirs[i]){
+                    String s = swap(str, i, j);
+                    if(!set.contains(s)){
+                        q.offer(s);
+                        set.add(s);
+                    }
+                }
+            }
+            level++;
+        }
+        return -1;
+    }
+    
+    public String swap(String str, int i, int j){
+        char[] ch = str.toCharArray();
+        char temp = ch[i];
+        ch[i] = ch[j];
+        ch[j] = temp;
+        return new String(ch);
+    }
+    // Logic 
+    // store all the possibilities in a q and check them all
+    // convert the input to string for better performance
