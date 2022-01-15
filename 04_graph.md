@@ -11,7 +11,7 @@
 9.  [Sliding Puzzle Hard](#sliding-puzzle)
 10.  [Minimum Number Of Swaps Required To Sort An Array Hard](#minimum-number-of-swaps-required-to-sort-an-array)
 11.  [Pepcoder And Reversing Medium](url)
-12.  [Pepcoding Course Schedule Medium](url)
+12.  [Course Schedule](https://leetcode.com/problems/course-schedule-ii/)
 13.  [Alien Dictionary Medium](url)
 14.  [Kruskal Algorithm Medium](url)
 15.  [Optimize Water Distribution Hard](url)
@@ -505,4 +505,42 @@
       // for eg to sort 3 elements we need 2 swaps
       // so to sort a cycle of clen we need clen-1 swaps
       
-      
+### [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
+
+    public int[] findOrder(int numCourses, int[][] prerequisites) {
+        int[] arr = new int[numCourses];
+        List<List<Integer>> graph = new ArrayList<>();
+        initialise(arr, graph, prerequisites);
+        
+        return dfs(arr, graph);
+    }
+    
+    public void initialise(int[] arr, List<List<Integer>> graph, int[][] data){
+        int n = arr.length;
+        while(n-- > 0) graph.add(new ArrayList<>());
+        for(int[] edge : data){
+            arr[edge[0]]++;
+            graph.get(edge[1]).add(edge[0]);
+        }
+    }
+    
+    public int[] dfs(int[] arr, List<List<Integer>> graph){
+        int [] order = new int[arr.length]; 
+        Queue<Integer> q = new LinkedList<>();
+        
+        for(int i=0; i<arr.length; i++)
+            if(arr[i] == 0) q.add(i);
+        
+        int vis = 0;
+        while(q.size() > 0){
+            int val = q.remove();
+            order[vis++] = val;
+            for(int nbr : graph.get(val)){
+                arr[nbr]--;
+                if(arr[nbr] == 0) q.add(nbr);
+            }
+        }
+        
+        if(vis == arr.length) return order;
+        return new int[0];
+    }
