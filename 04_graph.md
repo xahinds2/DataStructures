@@ -11,7 +11,7 @@
 9.  [Sliding Puzzle Hard](#sliding-puzzle)
 10.  [Minimum Number Of Swaps Required To Sort An Array Hard](#minimum-number-of-swaps-required-to-sort-an-array)
 11.  [Pepcoder And Reversing Medium](url)
-12.  [Course Schedule](https://leetcode.com/problems/course-schedule-ii/)
+12.  [Course Schedule](#course-schedule-ii)
 13.  [Alien Dictionary Medium](url)
 14.  [Kruskal Algorithm Medium](url)
 15.  [Optimize Water Distribution Hard](url)
