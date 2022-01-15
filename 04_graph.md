@@ -544,3 +544,8 @@
         if(vis == arr.length) return order;
         return new int[0];
     }
+    
+    // make a ndegree array to store the priority of that course
+    // add all the 0 degree indx to que and visit their nbrs using graph
+    // decrement the degree of nbrs and keep on adding the nbrs if their ndegree is 0
+    // and store the element while removing from que
