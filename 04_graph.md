@@ -14,7 +14,7 @@
 12.  [Course Schedule](#course-schedule-ii)
 13.  [Alien Dictionary](#alien-dictionary)
 14.  [Kruskal Algorithm](url)
-15.  [Optimize Water Distribution](url)
+15.  [Optimize Water Distribution](#optimize-water-distribution)
 16.  [Swim In Rising Water](url)
 17.  [Minimum Cost To Connect All Cities](url)
 18.  [Bellman Ford](url)
@@ -645,3 +645,46 @@
         if (sb.length() != degree.size() || flag == true) return "";
         return sb.toString();
     }
+
+### [Optimize Water Distribution](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/optimize-water-distribution-official/ojquestion)
+
+      public static int minCostToSupplyWater(int n, int[] wells, int[][] pipes) {
+          List<List<Pair>> graph = new ArrayList<>();
+
+          for(int i=0; i<=n; i++) graph.add(new ArrayList<>());
+
+          for(int i=0; i<pipes.length; i++){
+              int u = pipes[i][0];
+              int v = pipes[i][1];
+              int w = pipes[i][2];
+
+              graph.get(u).add(new Pair(v, w));
+              graph.get(v).add(new Pair(u, w));
+          }
+
+          for(int i=0; i< n; i++){
+              graph.get(i+1).add(new Pair(0, wells[i]));
+              graph.get(0).add(new Pair(i+1, wells[i]));
+          }
+
+          int ans = 0;
+          boolean[] vis = new boolean[n+1];
+          PriorityQueue<Pair> pq = new PriorityQueue<>();
+          pq.add(new Pair(0, 0));
+
+          while(pq.size() > 0){
+              Pair rem = pq.remove();
+              if(vis[rem.v] == true) continue;
+
+              ans += rem.w;
+              vis[rem.v] = true;
+              List<Pair> nbrs = graph.get(rem.v);
+              for(Pair nbr : nbrs){
+                  if(vis[nbr.v] == false){
+                      pq.add(nbr);
+                  }
+              }
+          }
+
+          return ans;
+      }
