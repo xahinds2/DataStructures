@@ -15,7 +15,7 @@
 13.  [Alien Dictionary](#alien-dictionary)
 14.  [Kruskal Algorithm](url)
 15.  [Optimize Water Distribution](#optimize-water-distribution)
-16.  [Swim In Rising Water](url)
+16.  [Swim In Rising Water](#swim-in-rising-water)
 17.  [Minimum Cost To Connect All Cities](url)
 18.  [Bellman Ford](url)
 19.  [Negative Weight Cycle Detection](url)
@@ -694,3 +694,38 @@
       // total location will be n+1
       // using priorityqueue add the weight of lowest cost if it is not visited
       // add all of its neighbor to the priorityqueue
+
+### [Swim in Rising Water](https://leetcode.com/problems/swim-in-rising-water/)
+
+    public int swimInWater(int[][] grid) {
+        PriorityQueue<Pair> pq = new PriorityQueue<>();
+        pq.add(new Pair(0,0, grid[0][0]));
+        int n = grid.length;
+        boolean[][] vis = new boolean[n][n];
+        
+        
+        int[][] dirs = {{1,0}, {0,1}, {-1,0}, {0,-1}};
+        while(pq.size() > 0){
+            Pair rem = pq.remove();
+            
+            if(rem.x == n-1 && rem.y == n-1) return rem.w;
+            
+            if(vis[rem.x][rem.y] == true) continue;
+            
+            vis[rem.x][rem.y] = true;
+            
+            for(int[] dir : dirs){
+                int i = rem.x + dir[0];
+                int j = rem.y + dir[1];
+                
+                if(i < 0 || j < 0 || i >= n || j >= n || vis[i][j] == true) continue;
+                
+                pq.add(new Pair(i, j, Math.max(rem.w, grid[i][j])));
+            }
+        }
+        return 0;
+    }
+    
+    // Logic :
+    // using priority queue we will store all the neihgbors of the point
+    // we will travel to the nbr with smallest cost and this will give the min cost
