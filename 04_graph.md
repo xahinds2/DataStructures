@@ -688,3 +688,9 @@
 
           return ans;
       }
+      
+      // Logic
+      // make a graph containing the edges of the pipes and also make a virtual well as index 0;
+      // total location will be n+1
+      // using priorityqueue add the weight of lowest cost if it is not visited
+      // add all of its neighbor to the priorityqueue
