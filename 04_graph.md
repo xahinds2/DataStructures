@@ -16,7 +16,7 @@
 14.  [Kruskal Algorithm](url)
 15.  [Optimize Water Distribution](#optimize-water-distribution)
 16.  [Swim In Rising Water](#swim-in-rising-water)
-17.  [Minimum Cost To Connect All Cities](url)
+17.  [Minimum Cost To Connect All Cities](#minimum-cost-to-connect-all-cities)
 18.  [Bellman Ford](url)
 19.  [Negative Weight Cycle Detection](url)
 20.  [Kosaraju Algorithm](url)
@@ -729,3 +729,43 @@
     // Logic :
     // using priority queue we will store all the neihgbors of the point
     // we will travel to the nbr with smallest cost and this will give the min cost
+
+### [Minimum Cost To Connect All Cities](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/minimum-cost-to-connect-all-cities-official/ojquestion)
+
+      public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
+        int vtces = Integer.parseInt(br.readLine());
+        ArrayList<ArrayList<Edge>> graph = new ArrayList<>();
+        for (int i = 0; i < vtces; i++) {
+          graph.add(new ArrayList<>());
+        }
+
+        int edges = Integer.parseInt(br.readLine());
+        for (int i = 0; i < edges; i++) {
+          String[] parts = br.readLine().split(" ");
+          int v1 = Integer.parseInt(parts[0]);
+          int v2 = Integer.parseInt(parts[1]);
+          int wt = Integer.parseInt(parts[2]);
+          graph.get(v1).add(new Edge(v2, wt));
+          graph.get(v2).add(new Edge(v1, wt));
+        }
+        PriorityQueue<Edge> pq = new PriorityQueue<>();
+        pq.add(new Edge(0,0));
+
+        boolean[] vis = new boolean[vtces];
+        int ans = 0 ;
+        while(pq.size() > 0){
+            Edge rem = pq.remove();
+            if(vis[rem.v]) continue;
+
+            vis[rem.v] = true;
+            ans += rem.wt;
+
+            ArrayList<Edge> nbrs = graph.get(rem.v);
+            for(Edge nbr : nbrs){
+                if(!vis[nbr.v]) pq.add(nbr);
+            }
+        }
+        System.out.println(ans);
+      }
