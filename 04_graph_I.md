@@ -21,7 +21,7 @@
 19.  [Negative Weight Cycle Detection](#negative-weight-cycle-detection)
 20.  [Kosaraju Algorithm](#kosaraju-algorithm)
 
-## [Graph-II](https://github.com/xahinds2/DataStructures/blob/main/05_graph_II.md)
+## [Graph - II](https://github.com/xahinds2/DataStructures/blob/main/05_graph_II.md)
 
 # Solutions
 
