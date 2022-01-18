@@ -645,7 +645,7 @@
         if (sb.length() != degree.size() || flag == true) return "";
         return sb.toString();
     }
-###[Kruskal Algorithm](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/kruskal-algorithm-official/ojquestion)
+### [Kruskal Algorithm](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/kruskal-algorithm-official/ojquestion)
 
 
 ### [Optimize Water Distribution](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/optimize-water-distribution-official/ojquestion)
