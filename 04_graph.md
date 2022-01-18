@@ -17,9 +17,9 @@
 15.  [Optimize Water Distribution](#optimize-water-distribution)
 16.  [Swim In Rising Water](#swim-in-rising-water)
 17.  [Minimum Cost To Connect All Cities](#minimum-cost-to-connect-all-cities)
-18.  [Bellman Ford](url)
-19.  [Negative Weight Cycle Detection](url)
-20.  [Kosaraju Algorithm](url)
+18.  [Bellman Ford](#bellman-ford)
+19.  [Negative Weight Cycle Detection](#negative-weight-cycle)
+20.  [Kosaraju Algorithm](#kosaraju-algorithm)
 21.  [Mother Vertex](url)
 22.  [Articulation Point](url)
 23.  [Critical Connection](url)
@@ -769,3 +769,141 @@
         }
         System.out.println(ans);
       }
+
+### [Bellman Ford](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/bellman-ford-official/ojquestion)
+
+    public static void main(String[] args) throws NumberFormatException, IOException {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String[] st = br.readLine().split(" ");
+		int n = Integer.parseInt(st[0]);
+		int m = Integer.parseInt(st[1]);
+		
+		int[][] edges = new int[m][3];
+
+		for (int i = 0; i < m; i++) {
+			st = br.readLine().split(" ");
+			edges[i][0] = Integer.parseInt(st[0]);
+			edges[i][1] = Integer.parseInt(st[1]);
+			edges[i][2] = Integer.parseInt(st[2]);
+		}
+		
+	    int[] path = new int[n];
+	    Arrays.fill(path, Integer.MAX_VALUE);
+	    path[edges[0][0]-1] = 0;
+	    
+		for (int i = 0; i < n - 1; i++) {
+			for (int j = 0; j < m; j++) {
+				int u = edges[j][0]-1;
+				int v = edges[j][1]-1;
+				int wt = edges[j][2];
+				
+				if (path[u] != Integer.MAX_VALUE) {
+				    path[v] = Math.min(path[v], path[u] + wt);
+				}
+			}
+		}
+		
+		for(int i=1; i<n; i++){
+	        if(path[i] != Integer.MAX_VALUE) System.out.print(path[i] + " ");
+	        else System.out.print("1000000000 ");
+	    }
+    }
+    
+### [Negative Weight Cycle Detection](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/negative-weight-cycle-official/ojquestion)
+
+	public static int isNegativeWeightCycle(int n, int[][] edges) {
+		int[] path = new int[n];
+		Arrays.fill(path, Integer.MAX_VALUE);
+		path[0] = 0;
+		
+		for (int i = 0; i < n - 1; i++) {
+			for (int j = 0; j < edges.length; j++) {
+				int u = edges[j][0];
+				int v = edges[j][1];
+				int wt = edges[j][2];
+				
+				if (path[u] != Integer.MAX_VALUE)
+				    path[v] = Math.min(path[v], path[u] + wt);
+			}
+		}
+		
+		for (int i = 0; i < edges.length; i++) {
+			int u = edges[i][0];
+			int v = edges[i][1];
+			int wt = edges[i][2];
+			
+            if (path[u] != Integer.MAX_VALUE)
+				if(path[v] != Math.min(path[v], path[u] + wt));
+				    return 1;
+		}
+		
+		return 0;
+	}
+
+### [Kosaraju Algorithm](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/kosaraju-algorithm-official/ojquestion)
+
+	public static void main(String args[]) throws Exception {
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int e = scn.nextInt();
+        
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            graph.add(new ArrayList<>());
+        }
+        
+        for(int i=0; i<e; i++){
+            int u = scn.nextInt()-1;
+            int v = scn.nextInt()-1;
+            graph.get(u).add(v);
+        }
+        
+        // step 1 : random dfs and add elements to stack
+        boolean[] vis = new boolean[n];
+        Stack<Integer> st = new Stack<>();
+        
+        for(int i=0; i<n; i++){
+            if(vis[i] == false) dfs1(i, graph, vis, st);
+        }
+        
+        // step 2 : reverse edges
+        ArrayList<ArrayList<Integer>> ngraph = new ArrayList<>();
+        for(int i=0; i<n; i++){
+            ngraph.add(new ArrayList<>());
+        }
+        
+        for(int i=0; i<n; i++){
+            for(int nbr : graph.get(i))
+                ngraph.get(nbr).add(i);
+        }
+        
+        // step 3 : dfs on stack
+        int count = 0;
+        vis = new boolean[n];
+        while(st.size() > 0){
+            int rem = st.pop();
+            if(vis[rem] == false){
+                dfs2(rem, ngraph, vis);
+                count++;
+            }
+        }
+        System.out.println(count);
+	}
+	
+	public static void dfs1(int src, ArrayList<ArrayList<Integer>> graph, boolean[] vis, Stack<Integer> st){
+	    vis[src] = true;
+	    for(int nbr : graph.get(src)){
+	        if(vis[nbr] == false)
+	            dfs1(nbr, graph, vis, st);
+	            
+	    }
+	    st.push(src);  
+	}
+	public static void dfs2(int src, ArrayList<ArrayList<Integer>> graph, boolean[] vis){
+	    vis[src] = true;
+	    for(int nbr : graph.get(src)){
+	        if(vis[nbr] == false)
+	            dfs2(nbr, graph, vis);
+	            
+	    }
+	}
