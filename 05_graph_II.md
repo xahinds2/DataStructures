@@ -3,7 +3,7 @@
 ## [Graph - I](https://github.com/xahinds2/DataStructures/blob/main/04_graph_I.md)
 
 21. [Mother Vertex](#mother-vertex)
-22. [Articulation Point]
+22. Articulation Point
 23. Critical Connection
 24. Remove Max Number Of Edges To Keep Graph Fully Traversable
 25. Number Of Island 2
