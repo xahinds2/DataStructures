@@ -13,12 +13,12 @@
 11.  [Pepcoder And Reversing Medium](url)
 12.  [Course Schedule](#course-schedule-ii)
 13.  [Alien Dictionary](#alien-dictionary)
-14.  [Kruskal Algorithm](url)
+14.  [Kruskal Algorithm](#kruskal-algorithm)
 15.  [Optimize Water Distribution](#optimize-water-distribution)
 16.  [Swim In Rising Water](#swim-in-rising-water)
 17.  [Minimum Cost To Connect All Cities](#minimum-cost-to-connect-all-cities)
 18.  [Bellman Ford](#bellman-ford)
-19.  [Negative Weight Cycle Detection](#negative-weight-cycle)
+19.  [Negative Weight Cycle Detection](#negative-weight-cycle-detection)
 20.  [Kosaraju Algorithm](#kosaraju-algorithm)
 21.  [Mother Vertex](url)
 22.  [Articulation Point](url)
@@ -645,6 +645,8 @@
         if (sb.length() != degree.size() || flag == true) return "";
         return sb.toString();
     }
+###[Kruskal Algorithm](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/kruskal-algorithm-official/ojquestion)
+
 
 ### [Optimize Water Distribution](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/optimize-water-distribution-official/ojquestion)
 
@@ -899,6 +901,7 @@
 	    }
 	    st.push(src);  
 	}
+	
 	public static void dfs2(int src, ArrayList<ArrayList<Integer>> graph, boolean[] vis){
 	    vis[src] = true;
 	    for(int nbr : graph.get(src)){
