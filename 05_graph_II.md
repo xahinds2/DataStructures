@@ -1,6 +1,6 @@
 # Graph - II
 
-## [Graph - I](https://github.com/xahinds2/DataStructures/blob/main/04_graph_I.md)
+## [previous](https://github.com/xahinds2/DataStructures/blob/main/04_graph_I.md)
 
 21. [Mother Vertex](#mother-vertex)
 22. Articulation Point
