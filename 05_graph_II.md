@@ -47,3 +47,63 @@
     }
 
 ### [Articulation Point](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/articulation-point-official/ojquestion)
+
+    public static void main(String[] args) {
+        
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int e = scn.nextInt();
+        
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for(int i=0; i<n; i++) graph.add(new ArrayList<>());
+        
+        for(int i=0; i<e; i++){
+            int u = scn.nextInt()-1;
+            int v = scn.nextInt()-1;
+            graph.get(u).add(v);
+            graph.get(v).add(u);
+        }
+        
+        int[] par = new int[n];
+        int[] dis = new int[n];
+        int[] low = new int[n];
+        boolean[] ap = new boolean[n];
+        boolean[] vis = new boolean[n];
+        par[0] = -1;
+        dfs(0, graph, par, dis, low, ap, vis);
+        
+        int count = 0;
+        for(int i=0; i<n; i++){
+            if(ap[i] == true) count++;
+        }
+        System.out.println(count);
+    }
+    
+    public static void dfs(int u, ArrayList<ArrayList<Integer>> graph, int[] par, int[] dis, int[] low, boolean[] ap, boolean[] vis){
+        dis[u] = low[u] = time++;
+        
+        int count = 0;
+        vis[u] = true;
+        ArrayList<Integer> nbrs = graph.get(u);
+        
+        for(int i=0; i<nbrs.size(); i++){
+            int v = nbrs.get(i);
+            
+            if(par[u] == v){
+                continue;
+            } else if(vis[v] == true){
+                low[u] = Math.min(low[u], dis[v]);
+            } else{
+                par[v] = u;
+                dfs(v, graph, par, dis, low, ap, vis);
+                low[u] = Math.min(low[u], low[v]);
+                
+                if(par[u] == -1){
+                    count++;
+                    if(count >= 2) ap[u] = true;
+                } else {
+                    if(low[v] >= dis[u]) ap[u] = true;
+                }
+            }
+        }
+    }
