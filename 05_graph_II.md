@@ -4,7 +4,7 @@
 
 21. [Mother Vertex](#mother-vertex)
 22. [Articulation Point](#articulation-point)
-23. Critical Connection
+23. [Critical Connection](#critical-connection)
 24. Remove Max Number Of Edges To Keep Graph Fully Traversable
 25. Number Of Island 2
 26. Regions Cut By Slashes
@@ -117,3 +117,72 @@
     // mark the articulation point index using par, dis, low array
     // use the comment section in dfs func code to know how
     // count the number of true's
+
+### [Critical Connection](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/critical-connection-official/ojquestion)
+
+    public static void main(String[] args) {
+        
+        Scanner scn = new Scanner(System.in);
+        int n = scn.nextInt();
+        int e = scn.nextInt();
+        
+        ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+        for(int i=0; i<n; i++) graph.add(new ArrayList<>());
+        
+        for(int i=0; i<e; i++){
+            int u = scn.nextInt();
+            int v = scn.nextInt();
+            graph.get(u).add(v);
+            graph.get(v).add(u);
+        }
+        
+        int[] par = new int[n];
+        int[] dis = new int[n];
+        int[] low = new int[n];
+        boolean[] ap = new boolean[n];
+        boolean[] vis = new boolean[n];
+        par[0] = -1;
+        List<List<Integer>> ans = new ArrayList<>();
+        dfs(0, graph, par, dis, low, ap, vis, ans);
+        
+        System.out.println(ans);
+    }
+    
+    public static void dfs(int u, ArrayList<ArrayList<Integer>> graph, int[] par, int[] dis, int[] low, boolean[] ap, boolean[] vis, List<List<Integer>> ans){
+        dis[u] = low[u] = time++;
+        
+        int count = 0;
+        vis[u] = true;
+        ArrayList<Integer> nbrs = graph.get(u);
+        
+        for(int i=0; i<nbrs.size(); i++){
+            int v = nbrs.get(i);
+            
+            // mera neighbor hi mera parent ha toh fir choro skip karo
+            if(par[u] == v) continue;
+            
+            // acha thikha parent nhi ha toh check krte ha ki vis ha kya
+            // agar visited ha toh fir ye karo
+            else if(vis[v] == true) low[u] = Math.min(low[u], dis[v]);
+            
+            // agar ye nbr unvisited ha toh fir
+            // dfs lga k aage jaate rho fir return aane k time
+            // low[u] ko relax karo
+            else{
+                par[v] = u;
+                dfs(v, graph, par, dis, low, ap, vis, ans);
+                low[u] = Math.min(low[u], low[v]);
+                
+                if(low[v] > dis[u]){
+                    List<Integer> temp = new ArrayList<>();
+                    temp.add(u);
+                    temp.add(v);
+                    ans.add(temp);
+                }
+            }
+        }
+    }
+    // Logic :
+    // mark the articulation point index using par, dis, low array
+    // use the comment section in dfs func code to know how
+    // add the elgible point in lists
