@@ -10,7 +10,7 @@
 8.  [Bus Routes](#bus-routes)
 9.  [Sliding Puzzle Hard](#sliding-puzzle)
 10.  [Minimum Number Of Swaps Required To Sort An Array Hard](#minimum-number-of-swaps-required-to-sort-an-array)
-11.  [Pepcoder And Reversing Medium](url)
+11.  [Pepcoder And Reversing Medium](#pepcoder-and-reversing)
 12.  [Course Schedule](#course-schedule-ii)
 13.  [Alien Dictionary](#alien-dictionary)
 14.  [Kruskal Algorithm](#kruskal-algorithm)
@@ -505,6 +505,8 @@
       // for eg to sort 3 elements we need 2 swaps
       // so to sort a cycle of clen we need clen-1 swaps
       
+### [Pepcoder And Reversing](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/pepcoder-and-reversing-official/ojquestion)
+
 ### [Course Schedule II](https://leetcode.com/problems/course-schedule-ii/)
 
     public int[] findOrder(int numCourses, int[][] prerequisites) {
