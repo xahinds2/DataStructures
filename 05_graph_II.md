@@ -1,5 +1,7 @@
 # Graph - II
 
+## [Graph-II](https://github.com/xahinds2/DataStructures/blob/main/05_graph_II.md)
+
 1.  [Mother Vertex](#mother-vertex)
 2.  [Articulation Point](url)
 3.  [Critical Connection](url)
