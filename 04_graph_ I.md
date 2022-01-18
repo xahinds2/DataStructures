@@ -1,4 +1,4 @@
-# Graph
+# Graph-I
 
 1. [Coloring A Border](#coloring-a-border)
 2. [Number of Enclaves](#number-of-enclaves)
