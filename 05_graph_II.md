@@ -1,27 +1,27 @@
 # Graph - II
 
-## [Graph - I](https://github.com/xahinds2/DataStructures/blob/main/05_graph_I.md)
+## [Graph - I](https://github.com/xahinds2/DataStructures/blob/main/04_graph_I.md)
 
-1.  [Mother Vertex](#mother-vertex)
-2.  [Articulation Point](url)
-3.  [Critical Connection](url)
-4.  [Remove Max Number Of Edges To Keep Graph Fully Traversable](url)
-5.  [Number Of Island 2](url)
-6.  [Regions Cut By Slashes](url)
-7.  [Reconstruct Itinerary](url)
-8.  [Rank Transform Of A Matrix](url)
-9.  [Accounts Merge](url)
-10.  [Minimize Malware Spread](url)
-11.  [Minimize Malware Spread 2](url)
-12.  [Redundant Connection](url)
-13.  [Minimize Hamming Distance After Swap Operations](url)
-14.  [Redundant Connection 2](url)
-15.  [Satisfiability Of Equality Equation](url)
-16.  [Sentence Similarity](url)
-17.  [Park Regions Medium](url)
-18.  [Kill The Most Monsters](url)
-19.  [Number Of Connections To Make Pipeline Connected](url)
-20.  [Number Of Provinces](url)
+21. [Mother Vertex](#mother-vertex)
+22. [Articulation Point]
+23. Critical Connection
+24. Remove Max Number Of Edges To Keep Graph Fully Traversable
+25. Number Of Island 2
+26. Regions Cut By Slashes
+27. Reconstruct Itinerary
+28. Rank Transform Of A Matrix
+29. Accounts Merge
+30. Minimize Malware Spread
+31. Minimize Malware Spread 2
+32. Redundant Connection
+33. Minimize Hamming Distance After Swap Operations
+34. Redundant Connection 2
+35. Satisfiability Of Equality Equation
+36. Sentence Similarity
+37. Park Regions
+38. Kill The Most Monsters
+39. Number Of Connections To Make Pipeline Connected
+40. Number Of Provinces Medium
 
 # Solutions
 
