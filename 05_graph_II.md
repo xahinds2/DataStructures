@@ -3,7 +3,7 @@
 ## [previous](https://github.com/xahinds2/DataStructures/blob/main/04_graph_I.md)
 
 21. [Mother Vertex](#mother-vertex)
-22. Articulation Point
+22. [Articulation Point](#articulation-point)
 23. Critical Connection
 24. Remove Max Number Of Edges To Keep Graph Fully Traversable
 25. Number Of Island 2
@@ -45,3 +45,5 @@
         if(count == 0) return st.peek() + 1;
         return -1;
     }
+
+### [Articulation Point](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/articulation-point-official/ojquestion)
