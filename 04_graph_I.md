@@ -7,19 +7,19 @@
 5. [Rotting Oranges](#rotting-oranges)
 6. [As Far from Land as Possible](#as-far-from-land-as-possible)
 7. [Shortest Bridge](#shortest-bridge)
-8.  [Bus Routes](#bus-routes)
-9.  [Sliding Puzzle Hard](#sliding-puzzle)
-10.  [Minimum Number Of Swaps Required To Sort An Array Hard](#minimum-number-of-swaps-required-to-sort-an-array)
-11.  [Pepcoder And Reversing Medium](#pepcoder-and-reversing)
-12.  [Course Schedule](#course-schedule-ii)
-13.  [Alien Dictionary](#alien-dictionary)
-14.  [Kruskal Algorithm](#kruskal-algorithm)
-15.  [Optimize Water Distribution](#optimize-water-distribution)
-16.  [Swim In Rising Water](#swim-in-rising-water)
-17.  [Minimum Cost To Connect All Cities](#minimum-cost-to-connect-all-cities)
-18.  [Bellman Ford](#bellman-ford)
-19.  [Negative Weight Cycle Detection](#negative-weight-cycle-detection)
-20.  [Kosaraju Algorithm](#kosaraju-algorithm)
+8. [Bus Routes](#bus-routes)
+9. [Sliding Puzzle Hard](#sliding-puzzle)
+10. [Minimum Number Of Swaps Required To Sort An Array Hard](#minimum-number-of-swaps-required-to-sort-an-array)
+11. Pepcoder And Reversing Medium
+12. [Course Schedule](#course-schedule-ii)
+13. [Alien Dictionary](#alien-dictionary)
+14. Kruskal Algorithm
+15. [Optimize Water Distribution](#optimize-water-distribution)
+16. [Swim In Rising Water](#swim-in-rising-water)
+17. [Minimum Cost To Connect All Cities](#minimum-cost-to-connect-all-cities)
+18. [Bellman Ford](#bellman-ford)
+19. [Negative Weight Cycle Detection](#negative-weight-cycle-detection)
+20. [Kosaraju Algorithm](#kosaraju-algorithm)
 
 ## [Graph - II](https://github.com/xahinds2/DataStructures/blob/main/05_graph_II.md)
 
@@ -629,8 +629,6 @@
         if (sb.length() != degree.size() || flag == true) return "";
         return sb.toString();
     }
-### [Kruskal Algorithm](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/kruskal-algorithm-official/ojquestion)
-
 
 ### [Optimize Water Distribution](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/optimize-water-distribution-official/ojquestion)
 
