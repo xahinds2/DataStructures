@@ -21,7 +21,7 @@
 37. Park Regions
 38. Kill The Most Monsters
 39. Number Of Connections To Make Pipeline Connected
-40. Number Of Provinces Medium
+40. Number Of Provinces
 
 # Solutions
 
