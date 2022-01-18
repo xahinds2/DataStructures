@@ -89,11 +89,17 @@
         for(int i=0; i<nbrs.size(); i++){
             int v = nbrs.get(i);
             
-            if(par[u] == v){
-                continue;
-            } else if(vis[v] == true){
-                low[u] = Math.min(low[u], dis[v]);
-            } else{
+            // mera neighbor hi mera parent ha toh fir choro skip karo
+            if(par[u] == v) continue;
+            
+            // acha thikha parent nhi ha toh check krte ha ki vis ha kya
+            // agar visited ha toh fir ye karo
+            else if(vis[v] == true) low[u] = Math.min(low[u], dis[v]);
+            
+            // agar ye nbr unvisited ha toh fir
+            // dfs lga k aage jaate rho fir return aane k time
+            // low[u] ko relax karo
+            else{
                 par[v] = u;
                 dfs(v, graph, par, dis, low, ap, vis);
                 low[u] = Math.min(low[u], low[v]);
@@ -107,3 +113,7 @@
             }
         }
     }
+    // Logic :
+    // mark the articulation point index using par, dis, low array
+    // use the comment section in dfs func code to know how
+    // count the number of true's
