@@ -214,7 +214,6 @@
                 if(tempa == true) mergeda++;
                 if(tempb == true) mergedb++;
                 if(!tempa && !tempb) removededge++;
-                
             } else if(edge[0] == 1){
                 boolean tempa = union(edge[1], edge[2], parenta, ranka);
                 if(tempa == true) mergeda++;
@@ -230,3 +229,7 @@
         
         return removededge;
     }
+    // Logic :
+    // if a edge does not make cycle use it
+    // use union func to merge non cyclic edges
+    // sort it to use '3' edge first
