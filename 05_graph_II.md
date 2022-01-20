@@ -5,7 +5,7 @@
 21. [Mother Vertex](#mother-vertex)
 22. [Articulation Point](#articulation-point)
 23. [Critical Connection](#critical-connection)
-24. Remove Max Number Of Edges To Keep Graph Fully Traversable
+24. [Remove Max Number Of Edges To Keep Graph Fully Traversable](#remove-max-number-of-edges-to-keep-graph-fully-traversable)
 25. Number Of Island 2
 26. Regions Cut By Slashes
 27. Reconstruct Itinerary
@@ -186,3 +186,47 @@
     // mark the articulation point index using par, dis, low array
     // use the comment section in dfs func code to know how
     // add the elgible point in lists
+
+### [Remove Max Number Of Edges To Keep Graph Fully Traversable](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/remove-max-number-of-edges-to-keep-graph-fully-traversable-official/ojquestion)
+
+    public int maxNumEdgesToRemove(int n, int[][] edges) {
+        Arrays.sort(edges, (a, b) -> Integer.compare(b[0], a[0]));
+        
+        int[] parenta = new int[n+1];
+        int[] parentb = new int[n+1];
+        int[] ranka = new int[n+1];
+        int[] rankb = new int[n+1];
+        
+        for(int i=0; i<parenta.length; i++){
+            parenta[i] = i;
+            parentb[i] = i;
+            ranka[i] = 1;
+            rankb[i] = 1;
+        }
+        int mergeda = 1;
+        int mergedb = 1;
+        int removededge = 0;
+        
+        for(int[] edge : edges){
+            if(edge[0] == 3){
+                boolean tempa = union(edge[1], edge[2], parenta, ranka);
+                boolean tempb = union(edge[1], edge[2], parentb, rankb);
+                if(tempa == true) mergeda++;
+                if(tempb == true) mergedb++;
+                if(!tempa && !tempb) removededge++;
+                
+            } else if(edge[0] == 1){
+                boolean tempa = union(edge[1], edge[2], parenta, ranka);
+                if(tempa == true) mergeda++;
+                else removededge++;
+            } else {
+                boolean tempb = union(edge[1], edge[2], parentb, rankb);
+                if(tempb == true) mergedb++;
+                else removededge++;
+            }
+        }
+        
+        if(mergeda != n || mergedb != n) return -1;
+        
+        return removededge;
+    }
