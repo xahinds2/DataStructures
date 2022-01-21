@@ -13,7 +13,7 @@
 29. Accounts Merge
 30. Minimize Malware Spread
 31. Minimize Malware Spread 2
-32. Redundant Connection
+32. [Redundant Connection](#redundant-connection)
 33. Minimize Hamming Distance After Swap Operations
 34. Redundant Connection 2
 35. Satisfiability Of Equality Equation
@@ -261,3 +261,47 @@
     // use for loop and travel univisited index
     // use dfs on visited index and mark its neighbor as visited
     // use count var and return
+
+### [Redundant Connection](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/redundant-connection-official/ojquestion)
+
+    public int[] findRedundantConnection(int[][] edges) {
+        
+        int n = edges.length + 1;
+        int[] parent = new int[n];
+        int[] rank = new int[n];
+        int[] ans = new int[2];
+        
+        for(int i=0 ; i<n; i++){
+            parent[i] = i;
+            rank[i] = 1;
+        }
+        
+        for(int [] edge : edges) union(edge[0], edge[1], parent, rank, ans);
+        
+        return ans;
+        
+    }
+    
+    public void union(int u, int v, int[] par, int[] rank, int[] ans){
+        int lu = find(par, u);
+        int lv = find(par, v);
+            
+        if(lu == lv){
+            ans[0] = u;
+            ans[1] = v;
+        } else {
+            if(rank[lu] < rank[lv]){
+                par[lu] = lv;
+            } else if(rank[lu] > rank[lv]){
+                par[lv] = lu;
+            } else {
+                par[lv] = lu;
+                rank[lu]++;
+            }
+        }
+    }
+
+    public int find(int[] sets, int v) {
+        if(v == sets[v]) return v;
+        return find(sets, sets[v]);
+    }
