@@ -21,7 +21,7 @@
 37. Park Regions
 38. Kill The Most Monsters
 39. Number Of Connections To Make Pipeline Connected
-40. Number Of Provinces
+40. [Number Of Provinces](#number-of-provinces)
 
 # Solutions
 
@@ -233,3 +233,31 @@
     // if a edge does not make cycle use it
     // use union func to merge non cyclic edges
     // sort it to use '3' edge first
+
+### [Number of Provinces](https://leetcode.com/problems/number-of-provinces/)
+
+    public void dfs(int[][] M, int[] visited, int i) {
+        for (int j = 0; j < M.length; j++) {
+            if (M[i][j] == 1 && visited[j] == 0) {
+                visited[j] = 1;
+                dfs(M, visited, j);
+            }
+        }
+    }
+    public int findCircleNum(int[][] M) {
+        int[] visited = new int[M.length];
+        int count = 0;
+        for (int i = 0; i < M.length; i++) {
+            if (visited[i] == 0) {
+                dfs(M, visited, i);
+                count++;
+            }
+        }
+        return count;
+    }
+    
+    // Logic :
+    // use for loop on vis array instead of matrix for better optimizatio
+    // use for loop and travel univisited index
+    // use dfs on visited index and mark its neighbor as visited
+    // use count var and return
