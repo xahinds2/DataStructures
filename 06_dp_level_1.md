@@ -1,11 +1,11 @@
 # Dynamic Programming
 
-1. [Target Sum Subsets - Dp](#target-sum-subsets-dp)
+1. [Target Sum Subsets](#target-sum-subsets)
 
 
 # Solutions
 
-### [Target Sum Subsets - Dp](https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/target-sum-subsets-dp-official/ojquestion)
+### [Target Sum Subsets](https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/target-sum-subsets-dp-official/ojquestion)
 
         boolean[][] dp = new boolean[m+1][tar+1];
         
