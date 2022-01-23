@@ -169,3 +169,7 @@
 		}
 		return max;
 	}
+	// Logic :
+	// start from bottom right
+	// if(i == n-1 || j == m-1 || arr[i][j] == 0) dp[i][j] = arr[i][j];
+	// else take the min of right, down, right-down and add 1 to it
