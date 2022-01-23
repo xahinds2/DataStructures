@@ -2,6 +2,7 @@
 
 1. [Target Sum Subsets](#target-sum-subsets)
 2. [Zero One Knapsack](#zero-one-knapsack)
+3. [Jump Game II](#jump-game-ii)
 
 
 # Solutions
@@ -77,3 +78,27 @@
     // check for max value
     // if(j >= w) dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-w] + v);
     // else dp[i][j] = dp[i-1][j];
+
+### [Jump Game II](https://leetcode.com/problems/jump-game-ii/)
+
+    public int jump(int[] arr) {
+        int n = arr.length;
+        
+        Integer[] dp = new Integer[n];
+        dp[n-1] = 0;
+        
+        for (int i = n - 2; i >= 0; i--) {
+            if (arr[i] > 0) {
+                int min = Integer.MAX_VALUE;
+                for (int j = 1; j <= arr[i] && i + j < dp.length; j++)
+                   if(dp[i + j] != null) min = Math.min(min, dp[i + j]);
+                   
+                if(min != Integer.MAX_VALUE) dp[i] = min + 1;
+            }
+        }
+        return dp[0];
+    }
+    
+    // iterate from n-2 to 0 
+    // choose the min jump and assign to dp[i]
+    // return ith index dp[0]
