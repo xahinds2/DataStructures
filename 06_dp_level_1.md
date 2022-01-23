@@ -4,12 +4,13 @@
 2. [Zero One Knapsack](#zero-one-knapsack)
 3. [Jump Game II](#jump-game-ii)
 4. [Goldmine](#goldmine)
-5. Print All Paths With Minimum Jumps
-6. Print All Paths With Minimum Cost
-7. Print All Paths With Maximum Gold
-8. Print All Paths With Target Sum Subset
-9. Print All Results In 0-1 Knapsack
-10. Key Keyboard Medium
+5. [Largest Square Sub-matrix With All 1's](#largest-square-sub-matrix-with-all-ones)
+6. Print All Paths With Minimum Jumps
+7. Print All Paths With Minimum Cost
+8. Print All Paths With Maximum Gold
+9. Print All Paths With Target Sum Subset
+10. Print All Results In 0-1 Knapsack
+11. Key Keyboard Medium
 
 
 
@@ -147,3 +148,24 @@
     // start from the right side of the wall
     // assign the max value possible in dp array + arr
     // and return the max value in first column
+
+### [Largest Square Sub-matrix With All ones](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/largest-square-sub-matrix-with-all-ones-official/ojquestion)
+
+	public static int solution(int[][] arr) {
+		//write your code here
+		int n = arr.length;
+		int m = arr[0].length;
+		
+		int[][] dp = new int[n][m];
+		int max = 0;
+		for(int i=n-1; i>=0; i--){
+		    for(int j=m-1; j>=0; j--){
+		        if(i == n-1 || j == m-1 || arr[i][j] == 0) dp[i][j] = arr[i][j];
+		        else{
+		            dp[i][j] = Math.min(dp[i+1][j], Math.min(dp[i+1][j+1], dp[i][j+1])) + 1;
+		        }
+		        max = Math.max(dp[i][j], max);
+		    }
+		}
+		return max;
+	}
