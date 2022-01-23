@@ -3,6 +3,7 @@
 1. [Target Sum Subsets](#target-sum-subsets)
 2. [Zero One Knapsack](#zero-one-knapsack)
 3. [Jump Game II](#jump-game-ii)
+4. [Goldmine](#goldmine)
 
 
 # Solutions
@@ -102,3 +103,40 @@
     // iterate from n-2 to 0 
     // choose the min jump and assign to dp[i]
     // return ith index dp[0]
+
+### [Goldmine](https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/goldmine-official/ojquestion)
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner scn = new Scanner(System.in);
+        
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        
+        int[][] arr = new int[n][m];
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                arr[i][j] = scn.nextInt();
+            }
+        }
+        
+        int[][] dp = new int[n][m];
+        int max = Integer.MIN_VALUE;
+        for(int j=m-1; j>=0; j--){
+            for(int i=0; i<n; i++){
+                if(j == m-1) dp[i][j] = arr[i][j];
+                else if (i == 0) dp[i][j] = arr[i][j] + Math.max(dp[i][j+1], dp[i+1][j+1]);
+                else if (i == n-1) dp[i][j] = arr[i][j] + Math.max(dp[i][j+1], dp[i-1][j+1]);
+                else dp[i][j] = arr[i][j] + Math.max(Math.max(dp[i][j+1], dp[i-1][j+1]), dp[i+1][j+1]);
+            
+                if(j == 0) max = Math.max(max, dp[i][j]);
+            }
+        }
+        System.out.println(max);
+    }
+    
+    // Logic :
+    // start from the right side of the wall
+    // assign the max value possible in dp array + arr
+    // and return the max value in first column
