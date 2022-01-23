@@ -1,13 +1,15 @@
 # Dynamic Programming
 
-1. [Target Sum Subsets](#target-sum-subsets)
-2. [Zero One Knapsack](#zero-one-knapsack)
-3. [Print All Paths With Minimum Jumps](#Print-All-Paths-With-Minimum-Jumps)
-4. [Goldmine](#goldmine)
-5. [Largest Square Sub-matrix With All 1's](#largest-square-sub-matrix-with-all-ones)
-6. Key Keyboard
-
-
+1. [Largest Square Sub-matrix With All 1's](#largest-square-sub-matrix-with-all-ones)
+2. [Print All Paths With Minimum Jumps](#Print-All-Paths-With-Minimum-Jumps)
+3. Print All Paths With Minimum Cost
+4. Print All Paths With Maximum Gold
+5. Print All Paths With Target Sum Subset
+6. Print All Results In 0-1 Knapsack
+7. 2 Key Keyboard
+8. Longest Increasing Subsequence
+9. Print All Longest Increasing Subsequences
+10. Maximum Sum Increasing Subsequence
 
 # Solutions
 
