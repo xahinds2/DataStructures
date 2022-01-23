@@ -2,15 +2,10 @@
 
 1. [Target Sum Subsets](#target-sum-subsets)
 2. [Zero One Knapsack](#zero-one-knapsack)
-3. [Jump Game II](#jump-game-ii)
+3. [Print All Paths With Minimum Jumps](#Print-All-Paths-With-Minimum-Jumps)
 4. [Goldmine](#goldmine)
 5. [Largest Square Sub-matrix With All 1's](#largest-square-sub-matrix-with-all-ones)
-6. Print All Paths With Minimum Jumps
-7. Print All Paths With Minimum Cost
-8. Print All Paths With Maximum Gold
-9. Print All Paths With Target Sum Subset
-10. Print All Results In 0-1 Knapsack
-11. Key Keyboard Medium
+6. Key Keyboard
 
 
 
@@ -88,9 +83,9 @@
     // if(j >= w) dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-w] + v);
     // else dp[i][j] = dp[i-1][j];
 
-### [Jump Game II](https://leetcode.com/problems/jump-game-ii/)
+### [Print All Paths With Minimum Jumps](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/min-jumps-re-official/ojquestion)
 
-    public int jump(int[] arr) {
+    public static void Solution(int arr[]){
         int n = arr.length;
         
         Integer[] dp = new Integer[n];
@@ -105,7 +100,20 @@
                 if(min != Integer.MAX_VALUE) dp[i] = min + 1;
             }
         }
-        return dp[0];
+        
+        System.out.println(dp[0]);
+        printpaths(dp, arr, "0", 0);
+    }
+    
+    public static void printpaths(Integer[] dp, int[] arr, String p, int k){
+        if(k == dp.length-1) System.out.println(p + " .");
+        
+        for(int i=1; i<= arr[k] && (i+k) < dp.length; i++){
+            int idx = k+i;
+            if(dp[idx] != null && dp[idx] == dp[k]-1){
+                printpaths(dp, arr, p + " -> " + idx, idx);
+            }
+        }
     }
     
     // iterate from n-2 to 0 
