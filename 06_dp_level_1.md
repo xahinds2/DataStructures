@@ -4,6 +4,13 @@
 2. [Zero One Knapsack](#zero-one-knapsack)
 3. [Jump Game II](#jump-game-ii)
 4. [Goldmine](#goldmine)
+5. Print All Paths With Minimum Jumps
+6. Print All Paths With Minimum Cost
+7. Print All Paths With Maximum Gold
+8. Print All Paths With Target Sum Subset
+9. Print All Results In 0-1 Knapsack
+10. Key Keyboard Medium
+
 
 
 # Solutions
