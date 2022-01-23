@@ -3,7 +3,7 @@
 1. [Largest Square Sub-matrix With All 1's](#largest-square-sub-matrix-with-all-ones)
 2. [Print All Paths With Minimum Jumps](#Print-All-Paths-With-Minimum-Jumps)
 3. [Print All Paths With Minimum Cost](#Print-All-Paths-With-Minimum-Cost)
-4. Print All Paths With Maximum Gold
+4. [Print All Paths With Maximum Gold](#Print-All-Paths-With-Maximum-Gold)
 5. Print All Paths With Target Sum Subset
 6. Print All Results In 0-1 Knapsack
 7. 2 Key Keyboard
@@ -123,7 +123,7 @@
         else if(n+1 < dp[0].length) printpaths(dp, arr, p + "H", m, n+1);
     }
 
-### [Goldmine](https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/goldmine-official/ojquestion)
+### [Print All Paths With Maximum Gold](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/goldmine-re-official/ojquestion)
 
     public static void main(String[] args) throws Exception {
         // write your code here
@@ -143,7 +143,8 @@
         int[][] dp = new int[n][m];
         int max = Integer.MIN_VALUE;
         for(int j=m-1; j>=0; j--){
-            for(int i=0; i<n; i++){
+            for(int i=n-1; i>=0; i--){
+                
                 if(j == m-1) dp[i][j] = arr[i][j];
                 else if (i == 0) dp[i][j] = arr[i][j] + Math.max(dp[i][j+1], dp[i+1][j+1]);
                 else if (i == n-1) dp[i][j] = arr[i][j] + Math.max(dp[i][j+1], dp[i-1][j+1]);
@@ -153,6 +154,39 @@
             }
         }
         System.out.println(max);
+        
+        ArrayDeque<Pair> que = new ArrayDeque<>();
+        
+        for(int i=0; i<n; i++)
+            if(dp[i][0] == max) que.add(new Pair("" + i + " ", i, 0));
+            
+        while(que.size() > 0){
+            Pair rem = que.removeFirst();
+            int i = rem.i;
+            int j = rem.j;
+            
+            if(j == m - 1) System.out.println(rem.psf);
+            else if(i == 0){
+                int g = Math.max(dp[i][j+1], dp[i+1][j+1]);
+              
+                if(g == dp[i][j+1]) que.add(new Pair(rem.psf + "d2 ",i , j+1));
+                if(g == dp[i+1][j+1]) que.add(new Pair(rem.psf + "d3 ", i+1, j+1));
+            }
+            else if(i == n-1){
+                int g = Math.max(dp[i][j+1], dp[i-1][j+1]);
+                
+                if(dp[i-1][j+1] == g) que.add(new Pair(rem.psf + "d1 ", i-1, j+1));
+                if(dp[i][j+1] == g) que.add(new Pair(rem.psf + "d2 ", i, j+1));
+                
+            }
+            else {
+                int g = Math.max(dp[i][j+1], Math.max(dp[i-1][j+1], dp[i+1][j+1]));
+                
+                if(dp[i-1][j+1] == g) que.add(new Pair(rem.psf + "d1 ", i-1, j+1));
+                if(dp[i][j+1] == g) que.add(new Pair(rem.psf + "d2 ", i, j+1));
+                if(dp[i+1][j+1] == g) que.add(new Pair(rem.psf + "d3 ", i+1, j+1));
+            }
+        }
     }
     
     // Logic :
