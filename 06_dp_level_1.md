@@ -2,7 +2,7 @@
 
 1. [Largest Square Sub-matrix With All 1's](#largest-square-sub-matrix-with-all-ones)
 2. [Print All Paths With Minimum Jumps](#Print-All-Paths-With-Minimum-Jumps)
-3. Print All Paths With Minimum Cost
+3. [Print All Paths With Minimum Cost](#Print-All-Paths-With-Minimum-Cost)
 4. Print All Paths With Maximum Gold
 5. Print All Paths With Target Sum Subset
 6. Print All Results In 0-1 Knapsack
@@ -12,6 +12,153 @@
 10. Maximum Sum Increasing Subsequence
 
 # Solutions
+
+### [Largest Square Sub-matrix With All ones](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/largest-square-sub-matrix-with-all-ones-official/ojquestion)
+
+	public static int solution(int[][] arr) {
+		//write your code here
+		int n = arr.length;
+		int m = arr[0].length;
+		
+		int[][] dp = new int[n][m];
+		int max = 0;
+		for(int i=n-1; i>=0; i--){
+		    for(int j=m-1; j>=0; j--){
+		        if(i == n-1 || j == m-1 || arr[i][j] == 0) dp[i][j] = arr[i][j];
+		        else{
+		            dp[i][j] = Math.min(dp[i+1][j], Math.min(dp[i+1][j+1], dp[i][j+1])) + 1;
+		        }
+		        max = Math.max(dp[i][j], max);
+		    }
+		}
+		return max;
+	}
+	// Logic :
+	// start from bottom right
+	// if(i == n-1 || j == m-1 || arr[i][j] == 0) dp[i][j] = arr[i][j];
+	// else take the min of right, down, right-down and add 1 to it
+
+### [Print All Paths With Minimum Jumps](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/min-jumps-re-official/ojquestion)
+
+    public static void Solution(int arr[]){
+        int n = arr.length;
+        
+        Integer[] dp = new Integer[n];
+        dp[n-1] = 0;
+        
+        for (int i = n - 2; i >= 0; i--) {
+            if (arr[i] > 0) {
+                int min = Integer.MAX_VALUE;
+                for (int j = 1; j <= arr[i] && i + j < dp.length; j++)
+                   if(dp[i + j] != null) min = Math.min(min, dp[i + j]);
+                   
+                if(min != Integer.MAX_VALUE) dp[i] = min + 1;
+            }
+        }
+        
+        System.out.println(dp[0]);
+        printpaths(dp, arr, "0", 0);
+    }
+    
+    public static void printpaths(Integer[] dp, int[] arr, String p, int k){
+        if(k == dp.length-1) System.out.println(p + " .");
+        
+        for(int i=1; i<= arr[k] && (i+k) < dp.length; i++){
+            int idx = k+i;
+            if(dp[idx] != null && dp[idx] == dp[k]-1){
+                printpaths(dp, arr, p + " -> " + idx, idx);
+            }
+        }
+    }
+    
+    // iterate from n-2 to 0 
+    // choose the min jump and assign to dp[i]
+    // return ith index dp[0]
+    
+### [Print All Paths With Minimum Cost](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/minimum-cost-path-re-official/ojquestion)
+
+    public static void main(String[] args) throws Exception {
+        Scanner scn = new Scanner(System.in);
+        
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        
+        int[][] arr = new int[n][m];
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                arr[i][j] = scn.nextInt();
+            }
+        }
+        
+        int[][] dp = new int[n][m];
+        int max = Integer.MIN_VALUE;
+        
+        for(int i=n-1; i>=0; i--){
+            for(int j=m-1; j>=0; j--){
+                
+                if(i==n-1 && j==m-1) dp[i][j] = arr[i][j];
+                else if (i == n-1) dp[i][j] = arr[i][j] + dp[i][j+1];
+                else if (j == m-1) dp[i][j] = arr[i][j] + dp[i+1][j];
+                else dp[i][j] = arr[i][j] + Math.min(dp[i][j+1], dp[i+1][j]);
+            }
+        }
+        System.out.println(dp[0][0]);
+        printpaths(dp, arr, "", 0, 0);
+    }
+    
+    public static void printpaths(int[][] dp, int[][] arr, String p, int m, int n){
+        if(m == dp.length-1 && n == dp[0].length-1) System.out.println(p);
+        
+        if(m+1 < dp.length && n+1 < dp[0].length){
+            
+            if(dp[m+1][n] < dp[m][n+1]) printpaths(dp, arr, p + "V", m+1, n);
+            else if(dp[m+1][n] > dp[m][n+1]) printpaths(dp, arr, p + "H", m, n+1);
+            else{
+                printpaths(dp, arr, p + "V", m+1, n);
+                printpaths(dp, arr, p + "H", m, n+1);
+            }
+        }
+        else if(m+1 < dp.length) printpaths(dp, arr, p + "V", m+1, n);
+        else if(n+1 < dp[0].length) printpaths(dp, arr, p + "H", m, n+1);
+    }
+
+### [Goldmine](https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/goldmine-official/ojquestion)
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        Scanner scn = new Scanner(System.in);
+        
+        int n = scn.nextInt();
+        int m = scn.nextInt();
+        
+        int[][] arr = new int[n][m];
+        
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                arr[i][j] = scn.nextInt();
+            }
+        }
+        
+        int[][] dp = new int[n][m];
+        int max = Integer.MIN_VALUE;
+        for(int j=m-1; j>=0; j--){
+            for(int i=0; i<n; i++){
+                if(j == m-1) dp[i][j] = arr[i][j];
+                else if (i == 0) dp[i][j] = arr[i][j] + Math.max(dp[i][j+1], dp[i+1][j+1]);
+                else if (i == n-1) dp[i][j] = arr[i][j] + Math.max(dp[i][j+1], dp[i-1][j+1]);
+                else dp[i][j] = arr[i][j] + Math.max(Math.max(dp[i][j+1], dp[i-1][j+1]), dp[i+1][j+1]);
+            
+                if(j == 0) max = Math.max(max, dp[i][j]);
+            }
+        }
+        System.out.println(max);
+    }
+    
+    // Logic :
+    // start from the right side of the wall
+    // assign the max value possible in dp array + arr
+    // and return the max value in first column
 
 ### [Target Sum Subsets](https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/target-sum-subsets-dp-official/ojquestion)
 
@@ -84,102 +231,3 @@
     // check for max value
     // if(j >= w) dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-w] + v);
     // else dp[i][j] = dp[i-1][j];
-
-### [Print All Paths With Minimum Jumps](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/min-jumps-re-official/ojquestion)
-
-    public static void Solution(int arr[]){
-        int n = arr.length;
-        
-        Integer[] dp = new Integer[n];
-        dp[n-1] = 0;
-        
-        for (int i = n - 2; i >= 0; i--) {
-            if (arr[i] > 0) {
-                int min = Integer.MAX_VALUE;
-                for (int j = 1; j <= arr[i] && i + j < dp.length; j++)
-                   if(dp[i + j] != null) min = Math.min(min, dp[i + j]);
-                   
-                if(min != Integer.MAX_VALUE) dp[i] = min + 1;
-            }
-        }
-        
-        System.out.println(dp[0]);
-        printpaths(dp, arr, "0", 0);
-    }
-    
-    public static void printpaths(Integer[] dp, int[] arr, String p, int k){
-        if(k == dp.length-1) System.out.println(p + " .");
-        
-        for(int i=1; i<= arr[k] && (i+k) < dp.length; i++){
-            int idx = k+i;
-            if(dp[idx] != null && dp[idx] == dp[k]-1){
-                printpaths(dp, arr, p + " -> " + idx, idx);
-            }
-        }
-    }
-    
-    // iterate from n-2 to 0 
-    // choose the min jump and assign to dp[i]
-    // return ith index dp[0]
-
-### [Goldmine](https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/goldmine-official/ojquestion)
-
-    public static void main(String[] args) throws Exception {
-        // write your code here
-        Scanner scn = new Scanner(System.in);
-        
-        int n = scn.nextInt();
-        int m = scn.nextInt();
-        
-        int[][] arr = new int[n][m];
-        
-        for(int i=0; i<n; i++){
-            for(int j=0; j<m; j++){
-                arr[i][j] = scn.nextInt();
-            }
-        }
-        
-        int[][] dp = new int[n][m];
-        int max = Integer.MIN_VALUE;
-        for(int j=m-1; j>=0; j--){
-            for(int i=0; i<n; i++){
-                if(j == m-1) dp[i][j] = arr[i][j];
-                else if (i == 0) dp[i][j] = arr[i][j] + Math.max(dp[i][j+1], dp[i+1][j+1]);
-                else if (i == n-1) dp[i][j] = arr[i][j] + Math.max(dp[i][j+1], dp[i-1][j+1]);
-                else dp[i][j] = arr[i][j] + Math.max(Math.max(dp[i][j+1], dp[i-1][j+1]), dp[i+1][j+1]);
-            
-                if(j == 0) max = Math.max(max, dp[i][j]);
-            }
-        }
-        System.out.println(max);
-    }
-    
-    // Logic :
-    // start from the right side of the wall
-    // assign the max value possible in dp array + arr
-    // and return the max value in first column
-
-### [Largest Square Sub-matrix With All ones](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/largest-square-sub-matrix-with-all-ones-official/ojquestion)
-
-	public static int solution(int[][] arr) {
-		//write your code here
-		int n = arr.length;
-		int m = arr[0].length;
-		
-		int[][] dp = new int[n][m];
-		int max = 0;
-		for(int i=n-1; i>=0; i--){
-		    for(int j=m-1; j>=0; j--){
-		        if(i == n-1 || j == m-1 || arr[i][j] == 0) dp[i][j] = arr[i][j];
-		        else{
-		            dp[i][j] = Math.min(dp[i+1][j], Math.min(dp[i+1][j+1], dp[i][j+1])) + 1;
-		        }
-		        max = Math.max(dp[i][j], max);
-		    }
-		}
-		return max;
-	}
-	// Logic :
-	// start from bottom right
-	// if(i == n-1 || j == m-1 || arr[i][j] == 0) dp[i][j] = arr[i][j];
-	// else take the min of right, down, right-down and add 1 to it
