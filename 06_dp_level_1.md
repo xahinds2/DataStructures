@@ -5,7 +5,7 @@
 3. [Print All Paths With Minimum Cost](#Print-All-Paths-With-Minimum-Cost)
 4. [Print All Paths With Maximum Gold](#Print-All-Paths-With-Maximum-Gold)
 5. [Print All Paths With Target Sum Subset](#print-all-paths-with-target-sum-subset)
-6. Print All Results In 0-1 Knapsack
+6. [Print All Results In 0-1 Knapsack](#zero-one-knapsack)
 7. 2 Key Keyboard
 8. Longest Increasing Subsequence
 9. Print All Longest Increasing Subsequences
@@ -242,35 +242,40 @@
 
 ### [Zero One Knapsack](https://www.pepcoding.com/resources/online-java-foundation/dynamic-programming-and-greedy/zero-one-knapsack-official/ojquestion)
 
-    public static void main(String[] args) throws Exception {
         // write your code here
-        Scanner scn = new Scanner(System.in);
         
-        int m = scn.nextInt();
-        
-        int[] arrv = new int[m];
-        for(int i=0; i<m; i++) arrv[i] = scn.nextInt();
-        
-        int[] arrw = new int[m];
-        for(int i=0; i<m; i++) arrw[i] = scn.nextInt();
-        
-        int tar = scn.nextInt();
-        
-        int[][] dp = new int[m+1][tar+1];
-        
-        for(int i=1; i<=m; i++){
-            for(int j=1; j<=tar; j++){
-                int v = arrv[i-1];
-                int w = arrw[i-1];
+        int[][] dp = new int[n + 1][cap + 1];
+        for (int i = 1; i < dp.length; i++) {
+            for(int j = 1; j < dp[0].length; j++){
                 
-                if(j >= w) dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-w] + v);
-                else dp[i][j] = dp[i-1][j];
+                int val = values[i - 1];
+                int wt = wts[i - 1];
+                
+                if(j >= wt) dp[i][j] = Math.max(dp[i - 1][j], dp[i - 1][j - wt] + val);
+                else dp[i][j] = dp[i - 1][j];
             }
         }
+        System.out.println(dp[n][cap]);
         
-        System.out.println(dp[m][tar]);
-    }
-    // Logic :
-    // check for max value
-    // if(j >= w) dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-w] + v);
-    // else dp[i][j] = dp[i-1][j];
+        Queue<Pair> q = new ArrayDeque<>();
+        q.add(new Pair(n,cap,""));
+      
+        while (q.size() > 0) {
+		Pair rp = q.remove();
+		if (rp.i == 0 || rp.j == 0) System.out.println(rp.psf);
+		else {
+			int w = wts[rp.i - 1];
+			int v = values[rp.i - 1];
+			    
+			int exc = dp[rp.i - 1][rp.j];
+			int inc = rp.j - w >= 0 ? (dp[rp.i - 1][rp.j - w] + v) : Integer.MIN_VALUE;
+				
+			if (dp[rp.i][rp.j] == inc) q.add(new Pair(rp.i - 1, rp.j - w, (rp.i-1) + " " + rp.psf));
+			if (dp[rp.i][rp.j] == exc) q.add(new Pair(rp.i - 1, rp.j, rp.psf));
+		}
+	}
+	
+	    // Logic :
+	    // check for max value
+	    // if(j >= w) dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-w] + v);
+	    // else dp[i][j] = dp[i-1][j];
