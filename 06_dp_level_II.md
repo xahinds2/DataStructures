@@ -6,9 +6,9 @@
 4. [Print All Paths With Maximum Gold](#Print-All-Paths-With-Maximum-Gold)
 5. [Print All Paths With Target Sum Subset](#print-all-paths-with-target-sum-subset)
 6. [Print All Results In 0-1 Knapsack](#zero-one-knapsack)
-7. 2 Key Keyboard
-8. Longest Increasing Subsequence
-9. Print All Longest Increasing Subsequences
+7. [2 Keys Keyboard](#2-keys-keyboard)
+8. [Longest Increasing Subsequence](#longest-increasing-subsequence)
+9. [Print All Longest Increasing Subsequences](##longest-increasing-subsequence-with-print)
 10. Maximum Sum Increasing Subsequence
 
 # Solutions
@@ -279,3 +279,57 @@
 	    // check for max value
 	    // if(j >= w) dp[i][j] = Math.max(dp[i-1][j], dp[i-1][j-w] + v);
 	    // else dp[i][j] = dp[i-1][j];
+
+### [2 Keys Keyboard](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/2-key-keyboard-official/ojquestion)
+
+	public static int solution(int n) {
+		int res = 0;
+		for (int d = 2; d <= n; d++) {
+			while (n % d == 0) {
+				res += d;
+				n /= d;
+			}
+		}
+		return res > 0 || n == 1 ? res : n;
+	}
+
+### [Longest Increasing Subsequence](https://leetcode.com/problems/longest-increasing-subsequence/)
+
+    public int lengthOfLIS(int[] nums) {
+        int n = nums.length;
+        int[] dp = new int[n];
+        
+        int omax = 0;
+        for(int i=0; i<n; i++){
+            int max = 0;
+            
+            for(int j=0; j<i; j++)
+                if(nums[j] < nums[i]) max = Math.max(max, dp[j]);
+            
+            dp[i] = max+1;
+            omax = Math.max(omax, dp[i]);
+        }
+        return omax;
+    }
+
+### [Longest Increasing Subsequence with print](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/lis-re-official/ojquestion)
+
+        for(int i = 0; i < dp.length; i++){
+            if(omax == dp[i]){
+                queue.add(new Pair(omax, i, arr[i], arr[i] + ""));
+            }
+        }
+        
+        while(queue.size() > 0){
+            Pair rem = queue.removeFirst();
+            
+            if(rem.l == 1){
+                System.out.println(rem.psf);
+            }
+            
+            for(int j = rem.i - 1; j >= 0; j--){
+                if(dp[j] == rem.l - 1 && arr[j] <= rem.v){
+                    queue.add(new Pair(dp[j], j, arr[j], arr[j] + " -> " + rem.psf));
+                }
+            }
+        }
