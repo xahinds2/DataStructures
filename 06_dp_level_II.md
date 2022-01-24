@@ -8,7 +8,7 @@
 6. [Print All Results In 0-1 Knapsack](#zero-one-knapsack)
 7. [2 Keys Keyboard](#2-keys-keyboard)
 8. [Longest Increasing Subsequence](#longest-increasing-subsequence)
-9. [Print All Longest Increasing Subsequences](##longest-increasing-subsequence-with-print)
+9. [Print All Longest Increasing Subsequences](#longest-increasing-subsequence-with-print)
 10. Maximum Sum Increasing Subsequence
 
 # Solutions
