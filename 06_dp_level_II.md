@@ -9,7 +9,7 @@
 7. [2 Keys Keyboard](#2-keys-keyboard)
 8. [Longest Increasing Subsequence](#longest-increasing-subsequence)
 9. [Print All Longest Increasing Subsequences](#longest-increasing-subsequence-with-print)
-10. Maximum Sum Increasing Subsequence
+10. [Maximum Sum Increasing Subsequence](#msis)
 
 # Solutions
 
@@ -333,3 +333,30 @@
                 }
             }
         }
+
+### [MISS](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/msis-official/ojquestion)
+
+    public static void main(String[] args) throws Exception {
+        // write your code here
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        int[] arr = new int[n];
+        for (int i = 0; i < n; i++) arr[i] = Integer.parseInt(br.readLine());
+        
+        int[] dp = new int[n];
+        int omax = 0;
+        
+        for(int i=0; i<n; i++){
+            int max = 0;
+            
+            for(int j=0; j<i; j++){
+                if(arr[j] <= arr[i]) max = Math.max(max, dp[j]);
+            }
+            
+            dp[i] = max + arr[i];
+            omax = Math.max(dp[i], omax);
+        }
+        
+        System.out.println(omax);
+    
+    }
