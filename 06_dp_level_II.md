@@ -10,6 +10,16 @@
 8. [Longest Increasing Subsequence](#longest-increasing-subsequence)
 9. [Print All Longest Increasing Subsequences](#longest-increasing-subsequence-with-print)
 10. [Maximum Sum Increasing Subsequence](#msis)
+11. Longest Bitonic Subsequence
+12. Maximum Non-overlapping Bridges
+13. Russian Doll Envelopes
+14. Min Squares
+15. Catalan Number
+16. Number Of Bsts
+17. Count Of Valleys And Mountains
+18. Count Brackets
+19. Circle And Chords
+20. Number Of Ways Of Triangulation
 
 # Solutions
 
