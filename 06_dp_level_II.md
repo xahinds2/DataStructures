@@ -334,7 +334,7 @@
             }
         }
 
-### [MISS](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/msis-official/ojquestion)
+### [MSIS](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/msis-official/ojquestion)
 
     public static void main(String[] args) throws Exception {
         // write your code here
