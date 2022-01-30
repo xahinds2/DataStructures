@@ -13,7 +13,7 @@
 11. [Longest Bitonic Subsequence](#lbs)
 12. [Maximum Non-overlapping Bridges](#max-non-overlapping-bridges)
 13. [Russian Doll Envelopes](#max-non-overlapping-bridges) - same logic
-14. Min Squares
+14. [Min Squares](#min-squares)
 15. Catalan Number
 16. Number Of Bsts
 17. Count Of Valleys And Mountains
@@ -441,3 +441,24 @@
         
         System.out.println(max);
     }
+
+### [Min Squares](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/min-squares-official/ojquestion)
+
+	public static int solution(int n){
+		//write your code here
+		
+		int[] dp = new int[n+1];
+		dp[0] = 0;
+		dp[1] = 1;
+		
+		for(int i=2; i<=n; i++){
+		    int min = Integer.MAX_VALUE;
+		    for(int j=1; j<=i; j++){
+		        int rem = i - j*j;
+		        if(rem < 0) break;
+		        min = Math.min(dp[rem], min);
+		    }
+		    dp[i] = min + 1;
+		}
+		return dp[n];
+	}
