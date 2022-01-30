@@ -10,8 +10,8 @@
 8. [Longest Increasing Subsequence](#longest-increasing-subsequence)
 9. [Print All Longest Increasing Subsequences](#longest-increasing-subsequence-with-print)
 10. [Maximum Sum Increasing Subsequence](#msis)
-11. Longest Bitonic Subsequence
-12. Maximum Non-overlapping Bridges
+11. [Longest Bitonic Subsequence](#lbs)
+12. [Maximum Non-overlapping Bridges](#max-non-overlapping-bridges)
 13. Russian Doll Envelopes
 14. Min Squares
 15. Catalan Number
@@ -369,4 +369,75 @@
         
         System.out.println(omax);
     
+    }
+
+### [LBS](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/lbs-official/ojquestion)
+
+   public static void main(String[] args) throws Exception {
+      BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+      int n = Integer.parseInt(br.readLine());
+      int[] arr = new int[n];
+      for (int i = 0; i < arr.length; i++) {
+         arr[i] = Integer.parseInt(br.readLine());
+      }
+        int[] lis = new int[n];
+        
+        for(int i=0; i<n; i++){
+            int max = 0;
+            
+            for(int j=0; j<i; j++)
+                if(arr[j] < arr[i]) max = Math.max(max, lis[j]);
+            
+            lis[i] = max+1;
+        }
+        
+        int[] lds = new int[n];
+        
+        for(int i=n-1; i>=0; i--){
+            int max = 0;
+            
+            for(int j=n-1; j>i; j--)
+                if(arr[j] < arr[i]) max = Math.max(max, lds[j]);
+            
+            lds[i] = max+1;
+        }
+        
+        int omax = 0;
+        for(int i=0; i<n; i++){
+            omax = Math.max(omax, lis[i] + lds[i] - 1);
+        }
+        
+        System.out.println(omax);
+    }
+
+### [Maximum Non-overlapping Bridges](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/max-non-overlapping-bridges-official/ojquestion)
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        int n = Integer.parseInt(br.readLine());
+        Bridge[] brdgs = new Bridge[n];
+        
+        for (int i = 0; i < brdgs.length; i++) {
+            String str = br.readLine();
+            brdgs[i] = new Bridge();
+            brdgs[i].n = Integer.parseInt(str.split(" ")[0]);
+            brdgs[i].s = Integer.parseInt(str.split(" ")[1]);
+        }
+        
+        Arrays.sort(brdgs);
+        
+        int[] dp = new int[n];
+        dp[0] = 1;
+        
+        int max = 0;
+        for(int i=1; i<n; i++){
+            int count = 0;
+            for(int j=0; j<i; j++){
+                if(brdgs[j].s <= brdgs[i].s ) count = Math.max(dp[j], count);
+            }
+            dp[i] = count+1;
+            max = Math.max(dp[i], max);
+        }
+        
+        System.out.println(max);
     }
