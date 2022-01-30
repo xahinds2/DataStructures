@@ -12,7 +12,7 @@
 10. [Maximum Sum Increasing Subsequence](#msis)
 11. [Longest Bitonic Subsequence](#lbs)
 12. [Maximum Non-overlapping Bridges](#max-non-overlapping-bridges)
-13. Russian Doll Envelopes
+13. [Russian Doll Envelopes](#max-non-overlapping-bridges) - same logic
 14. Min Squares
 15. Catalan Number
 16. Number Of Bsts
