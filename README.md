@@ -6,4 +6,4 @@
 3. [Tree](https://github.com/xahinds2/DataStructures/blob/main/03_tree.md)
 4. [Graph - I](https://github.com/xahinds2/DataStructures/blob/main/04_graph_I.md)
 5. [Graph - II](https://github.com/xahinds2/DataStructures/blob/main/05_graph_II.md)
-6. [Dynamic Programing - II](https://github.com/xahinds2/DataStructures/blob/main/06_dp_level_II.md)
+6. [Dynamic Programing - I](https://github.com/xahinds2/DataStructures/blob/main/06_dp_I.md)
