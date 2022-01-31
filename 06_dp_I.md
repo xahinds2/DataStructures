@@ -14,7 +14,7 @@
 12. [Maximum Non-overlapping Bridges](#max-non-overlapping-bridges)
 13. [Russian Doll Envelopes](#max-non-overlapping-bridges) - same logic
 14. [Min Squares](#min-squares)
-15. Catalan Number
+15. [Catalan Number](#catalan-number)
 16. Number Of Bsts
 17. Count Of Valleys And Mountains
 18. Count Brackets
@@ -462,3 +462,12 @@
 		}
 		return dp[n];
 	}
+
+### [Catalan Number](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/catalan-number-official/ojquestion)
+
+        for(int i = 1; i < dp.length; i++){
+            for(int j = 0; j < i; j++){
+                dp[i] += dp[j] * dp[i - 1 - j];
+            }
+        }
+        System.out.println(dp[n]);
