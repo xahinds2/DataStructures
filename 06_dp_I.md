@@ -463,11 +463,18 @@
 		return dp[n];
 	}
 
-### [Catalan Number](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/dynamic-programming/catalan-number-official/ojquestion)
+### [Catalan Number](https://leetcode.com/problems/unique-binary-search-trees/)
 
-        for(int i = 1; i < dp.length; i++){
-            for(int j = 0; j < i; j++){
-                dp[i] += dp[j] * dp[i - 1 - j];
+    public int numTrees(int n) {
+        if(n==0 || n==1) return n;
+        int[] dp = new int[n+1];
+        
+        dp[0]=1;
+        
+        for(int i=1; i<=n; i++){
+            for(int j=0; j<i; j++){
+                dp[i]+=dp[j]*dp[i-j-1];
             }
         }
-        System.out.println(dp[n]);
+        return dp[n];
+    }
