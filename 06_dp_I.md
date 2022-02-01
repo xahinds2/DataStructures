@@ -15,7 +15,7 @@
 13. [Russian Doll Envelopes](#max-non-overlapping-bridges) - same logic
 14. [Min Squares](#min-squares)
 15. [Catalan Number](#catalan-number)
-16. Number Of Bsts
+16. [Number Of Bsts](#catalan-number) - same logic
 17. Count Of Valleys And Mountains
 18. Count Brackets
 19. Circle And Chords
