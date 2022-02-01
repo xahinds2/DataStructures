@@ -19,3 +19,13 @@
         
         return profit;
     }
+
+## Weekly Contest
+
+1. [Weekly Contest 279](https://leetcode.com/contest/weekly-contest-279)
+2. [Weekly Contest 280](https://leetcode.com/contest/weekly-contest-280)
+3. [Weekly Contest 281](https://leetcode.com/contest/weekly-contest-281)
+4. [Weekly Contest 282](https://leetcode.com/contest/weekly-contest-282)
+
+
+## Solutions
