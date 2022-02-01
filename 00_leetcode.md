@@ -1,6 +1,6 @@
 # LeetCode
 
-## [Reference Links](#reference-links)
+### [Reference Links](#reference-links)
 
 ## February Daily Challenges
 
