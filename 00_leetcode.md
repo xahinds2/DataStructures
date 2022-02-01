@@ -1,5 +1,5 @@
-# LeetCode Daily Challenges
-## February
+# LeetCode
+## February Daily Challenges
 
 1. [Best Time to Buy and Sell Stock](#best-time-to-buy-and-sell-stock)
 
