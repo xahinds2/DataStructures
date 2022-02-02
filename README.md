@@ -8,3 +8,4 @@
 5. [Graph - II](https://github.com/xahinds2/DataStructures/blob/main/05_graph_II.md)
 6. [Dynamic Programing - I](https://github.com/xahinds2/DataStructures/blob/main/06_dp_I.md)
 7. [Dynamic Programing - II](https://github.com/xahinds2/DataStructures/blob/main/07_dp_II.md)
+7. [Dynamic Programing - III](https://github.com/xahinds2/DataStructures/blob/main/08_dp_III.md)
