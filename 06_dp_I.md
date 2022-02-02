@@ -16,10 +16,10 @@
 14. [Min Squares](#min-squares)
 15. [Catalan Number](#catalan-number)
 16. [Number Of Bsts](#catalan-number) - same logic
-17. Count Of Valleys And Mountains
-18. Count Brackets
-19. Circle And Chords
-20. Number Of Ways Of Triangulation
+17. [Count Of Valleys And Mountains](#catalan-number) - same logic
+18. [Count Brackets](#catalan-number) - same logic
+19. [Circle And Chords](#catalan-number) - same logic
+20. [Number Of Ways Of Triangulation](#catalan-number) - same logic
 
 # Solutions
 
