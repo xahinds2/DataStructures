@@ -534,101 +534,43 @@
     // decrement the degree of nbrs and keep on adding the nbrs if their ndegree is 0
     // and store the element while removing from que
 
-### [Alien Dictionary](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/alien-dictionary-official/ojquestion)
+### [Alien Dictionary](https://www.lintcode.com/problem/892/)
 
-    public static String alienOrder(String[] words) {
-      
-        HashMap<Character, List<Character>> map = new HashMap<>();
-        HashMap<Character, Integer> degree = new HashMap<>();
-        Queue<Character> q = new LinkedList<>();
-        HashSet<Character> set = new HashSet<>();
-        StringBuilder sb = new StringBuilder();
-      
-        // initialising degree and map
-        // map contains the next elements
-        // degree contains the priority
-        // degree == 0 means it is independent
-        
-        for(int i=0; i<words.length-1; i++){
-            String s1 = words[i];
-            String s2 = words[i+1];
-            
-            // finding the unequal charcter index
-            // for eg in anc and af we will find n & f
-            
-            int j=0;
-            while(s1.charAt(j) == s2.charAt(j)){
-                j++;
-                if(j >= s1.length() || j >= s2.length()){
-                    j = -1;
-                    break;
-                }
-            }
-            
-            // if not found then just skip
-            
-            if(j == -1) continue;
-            
-            // we found ch1 & ch2
-            char ch1 = s1.charAt(j);
-            char ch2 = s2.charAt(j);
-            
-            // maping ch1 --> ch2
-            
-            List<Character> list = map.getOrDefault(ch1, new ArrayList<>());
-            list.add(ch2);
-            map.put(ch1, list);
-            
-            // increasing degree of ch2 because it is dependent on ch1
-            // degree == 0 means it is independent
-            
-            int d = degree.getOrDefault(ch2, 0);
-            degree.put(ch2, d+1);
-            set.add(ch2);
-        }
-        
-        // adding other elements as 0 degree
-        // using set for uniquesness
-        
-        for(String s : words){
-            for(char c : s.toCharArray())
-                if(!set.contains(c)){
-                    set.add(c);
-                    int d = degree.getOrDefault(c, 0);
-                    degree.put(c, d);
-                }
-        }
-        
-        // adding all the 0 degree independent characters in que
-        for(char c : degree.keySet()){
-            if(degree.get(c) == 0){
-                q.offer(c);
-                set.add(c);
-            }
-        }
-        
-        // use while loop and add its next 0 degree elements
-        // use flag to detect if there was >0 degree elements
-        // if flag == false return empty string
-        
-        boolean flag = true;
-        while(q.size() > 0){
-            char rem = q.poll();
-            set.add(rem);
-            sb.append(rem);
-            for(char next : map.getOrDefault(rem, new ArrayList<>())){
-                int d = degree.get(next);
-                if(d == 1){
-                    flag = false;
-                    q.offer(next);
-                }
-                else degree.put(next, d-1);
-            }
-        }
-        
-        if (sb.length() != degree.size() || flag == true) return "";
-        return sb.toString();
-    }
+	from typing import *
+	from collections import *
+	import heapq
+
+	class Solution:
+	    def alien_order(self, W: List[str]) -> str:
+		adj = defaultdict(list)
+		deg = {ch: 0 for word in W for ch in word}
+
+		same = True
+		for i in range(len(W)-1):
+		    for j in range(min(len(W[i]), len(W[i+1]))):
+			x, y = W[i][j], W[i+1][j]
+			if x != y:
+			    adj[x].append(y)
+			    deg[y] += 1
+			    same = False
+			    break
+		    if same and len(W[i]) > len(W[i+1]) : return ""
+
+		pq = [c for c in deg if deg[c] == 0]
+		heapq.heapify(pq)
+
+		res = ""
+		while pq :
+		    x = heapq.heappop(pq)
+		    res += x
+		    for y in adj[x]:
+			deg[y] -= 1
+			if deg[y] == 0:
+			    heapq.heappush(pq, y)
+
+		# if all the characters are not present in res due to cyclic
+		if len(res) != len(deg): return ""
+		return res
 
 ### [Optimize Water Distribution](https://www.pepcoding.com/resources/data-structures-and-algorithms-in-java-levelup/graphs/optimize-water-distribution-official/ojquestion)
 
